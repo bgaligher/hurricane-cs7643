@@ -4,11 +4,11 @@ import torch.nn as nn
 
 
 class HurricaneModel(nn.Module):
-    def __init__(self, output_size=5, freeze_encoder=True):
+    def __init__(self, output_size=5, freeze_encoder=True, checkpoint_path="checkpoints/sam_vit_b_01ec64.pth"):
         super().__init__()
 
         # ViT Encoder
-        sam = sam_model_registry["vit_b"](checkpoint="checkpoints/sam_vit_b_01ec64.pth")
+        sam = sam_model_registry["vit_b"](checkpoint_path)
         self.encoder = sam.image_encoder    # out: [B, 256, 64, 64]
 
         if freeze_encoder:
@@ -17,16 +17,16 @@ class HurricaneModel(nn.Module):
 
         # Decoder up-sample blocks (dim 1 is size 512 -> concat pre/post image feature maps from SAM)
         self.decoder_up = nn.Sequential(
-            self.decoder_up_block(512, 256),    # 256x128x128
-            self.decoder_up_block(256, 128),    # 128x256x256
-            self.decoder_up_block(128, 64),     # 64x512x512
-            self.decoder_up_block(64, 32),      # 32x1024x1024
+            self._decoder_up_block(512, 256),    # 256x128x128
+            self._decoder_up_block(256, 128),    # 128x256x256
+            self._decoder_up_block(128, 64),     # 64x512x512
+            self._decoder_up_block(64, 32),      # 32x1024x1024
         )
 
         # self.skip = nn.Conv2d(512, 16, kernel_size=1)   # skip connection
         self.fl = nn.Conv2d(32, output_size, kernel_size=1)    # 5x1024x1024
 
-    def decoder_up_block(self, in_dim, out_dim):
+    def _decoder_up_block(self, in_dim, out_dim):
         return nn.Sequential(
             nn.ConvTranspose2d(in_dim, out_dim, kernel_size=2, stride=2),   # upsample (by 2x)
             nn.BatchNorm2d(out_dim),
@@ -54,3 +54,4 @@ class HurricaneModel(nn.Module):
         output = self.fl(decoder_up)    # [B, 5, 1024, 1024]
 
         return output
+    
