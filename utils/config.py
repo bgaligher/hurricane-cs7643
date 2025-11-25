@@ -1,5 +1,5 @@
 """
-Original file from: DL Course A4 codebase
+Original file/class from: CS7653 - A4 codebase
 
 Edits:
 

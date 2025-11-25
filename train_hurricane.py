@@ -1,7 +1,7 @@
 """
 Original code from: https://github.com/DIUx-xView/xView2_first_place
 
-Edits for Project:
+Edits:
     - Disabled elastic image augmentation
     - Changed image_shape to 1024x1024
     - Swapped out Apex for Autocast for training mixed-precision
@@ -11,7 +11,8 @@ Edits for Project:
 References:
     1. https://docs.pytorch.org/docs/stable/notes/amp_examples.html#typical-mixed-precision-training
 """
-
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning)
 
 import os
 os.environ["MKL_NUM_THREADS"] = "2" 
@@ -32,8 +33,6 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 import torch.optim.lr_scheduler as lr_scheduler
 
-from torch.cuda.amp import autocast, GradScaler
-
 from xview2_1st_place_solution.adamw import AdamW
 from xview2_1st_place_solution.losses import dice_round, ComboLoss
 
@@ -45,7 +44,7 @@ import cv2
 
 from xview2_1st_place_solution.utils import *
 
-from skimage.morphology import square, dilation
+from skimage.morphology import footprint_rectangle, dilation
 
 from sklearn.model_selection import train_test_split
 
@@ -148,7 +147,7 @@ class TrainData(Dataset):
 
         crop_size = input_shape[0]
         if random.random() > 0.2:
-            crop_size = random.randint(int(input_shape[0] / 1.15), int(input_shape[0] / 0.85))
+            crop_size = min(random.randint(int(input_shape[0] / 1.15), int(input_shape[0] / 0.85)), img.shape[0], img.shape[1])
 
         bst_x0 = random.randint(0, img.shape[1] - crop_size)
         bst_y0 = random.randint(0, img.shape[0] - crop_size)
@@ -241,10 +240,10 @@ class TrainData(Dataset):
         msk = (msk > 127)
 
         msk[..., 0] = False
-        msk[..., 1] = dilation(msk[..., 1], square(5))
-        msk[..., 2] = dilation(msk[..., 2], square(5))
-        msk[..., 3] = dilation(msk[..., 3], square(5))
-        msk[..., 4] = dilation(msk[..., 4], square(5))
+        msk[..., 1] = dilation(msk[..., 1], footprint_rectangle((5, 5)))
+        msk[..., 2] = dilation(msk[..., 2], footprint_rectangle((5, 5)))
+        msk[..., 3] = dilation(msk[..., 3], footprint_rectangle((5, 5)))
+        msk[..., 4] = dilation(msk[..., 4], footprint_rectangle((5, 5)))
         msk[..., 1][msk[..., 2:].max(axis=2)] = False
         msk[..., 3][msk[..., 2]] = False
         msk[..., 4][msk[..., 2]] = False
@@ -391,16 +390,23 @@ def train_epoch(current_epoch, seg_loss, ce_loss, model, optimizer, scheduler, t
         post_imgs = sample["post_img"].to(device, non_blocking=True)
         msks = sample["msk"].to(device, non_blocking=True)
 
-        with torch.autocast(device_type=device):
+        if scaler is not None:
+            with torch.autocast(device_type="cuda"):
+                out = model(pre_imgs, post_imgs)
+                loss0 = seg_loss(out[:, 0, ...], msks[:, 0, ...])
+                loss1 = seg_loss(out[:, 1, ...], msks[:, 1, ...])
+                loss2 = seg_loss(out[:, 2, ...], msks[:, 2, ...])
+                loss3 = seg_loss(out[:, 3, ...], msks[:, 3, ...])
+                loss4 = seg_loss(out[:, 4, ...], msks[:, 4, ...])
+        else:
             out = model(pre_imgs, post_imgs)
-
             loss0 = seg_loss(out[:, 0, ...], msks[:, 0, ...])
             loss1 = seg_loss(out[:, 1, ...], msks[:, 1, ...])
             loss2 = seg_loss(out[:, 2, ...], msks[:, 2, ...])
             loss3 = seg_loss(out[:, 3, ...], msks[:, 3, ...])
             loss4 = seg_loss(out[:, 4, ...], msks[:, 4, ...])
 
-            loss = 0.05 * loss0 + 0.2 * loss1 + 0.8 * loss2 + 0.7 * loss3 + 0.4 * loss4
+        loss = 0.05 * loss0 + 0.2 * loss1 + 0.8 * loss2 + 0.7 * loss3 + 0.4 * loss4
 
         with torch.no_grad():
             _probs = torch.sigmoid(out[:, 0, ...])
@@ -416,11 +422,17 @@ def train_epoch(current_epoch, seg_loss, ce_loss, model, optimizer, scheduler, t
                 current_epoch, scheduler.get_lr()[-1], loss=losses, loss1=losses1, dice=dices))
         
         optimizer.zero_grad()
-        scaler.scale(loss).backward()
-        scaler.unscale_(optimizer)
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 0.999)
-        scaler.step(optimizer)
-        scaler.update()
+
+        if scaler is not None:
+            scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 0.999)
+            scaler.step(optimizer)
+            scaler.update()
+        else:
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 0.999)
+            optimizer.step()
 
     scheduler.step(current_epoch)
 
@@ -507,8 +519,10 @@ if __name__ == '__main__':
     params = model.parameters()
 
     optimizer = AdamW(params, lr=lr, weight_decay=weight_decay)
-    
-    scaler = torch.amp.GradScaler()
+
+    scaler = None
+    if torch.cuda.is_available():
+        scaler = torch.amp.GradScaler()
 
     scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[5, 11, 17, 23, 29, 33, 47, 50, 60, 70, 90, 110, 130, 150, 170, 180, 190], gamma=0.5)
 
