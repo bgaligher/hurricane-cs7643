@@ -4,9 +4,11 @@ Original code from: https://github.com/DIUx-xView/xView2_first_place
 Edits:
     - Disabled elastic image augmentation
     - Changed image_shape to 1024x1024
-    - Swapped out Apex for Autocast for training mixed-precision
+    - Swapped out Apex for Autocast to execute training with mixed-precision
     - Integrated usage of config.yaml files for hyperparamters
-    - Changed model forward pass method to take in pre/post images
+    - Changed model forward pass method to take in 2 images as input (pre + post images)
+    - Add support for more than just cuda device
+    - Removed 90/10 train/test split of the training dataset and added support for using dedicated test set for validation
 
 References:
     1. https://docs.pytorch.org/docs/stable/notes/amp_examples.html#typical-mixed-precision-training
@@ -44,7 +46,7 @@ import cv2
 
 from xview2_1st_place_solution.utils import *
 
-from skimage.morphology import footprint_rectangle, dilation
+from skimage.morphology import rectangle, dilation
 
 from sklearn.model_selection import train_test_split
 
@@ -58,7 +60,8 @@ from utils.config import Config
 cv2.setNumThreads(0)
 cv2.ocl.setUseOpenCL(False)
 
-train_dirs = ['data/TEST']  # Update this path if you have more training data directories
+train_dirs = ['data_wind/wind_train', 'data_wind/wind_tier3']
+val_dirs = ['data_wind/wind_test']
 
 models_folder = 'weights'
 
@@ -67,11 +70,17 @@ loc_folder = 'pred_loc_val'
 input_shape = (1024, 1024)  # SAM requires 1024x1024 input
 
 
-all_files = []
+train_files = []
 for d in train_dirs:
     for f in sorted(listdir(path.join(d, 'images'))):
         if '_pre_disaster.png' in f:
-            all_files.append(path.join(d, 'images', f))
+            train_files.append(path.join(d, 'images', f))
+
+val_files = []
+for d in val_dirs:
+    for f in sorted(listdir(path.join(d, 'images'))):
+        if '_pre_disaster.png' in f:
+            val_files.append(path.join(d, 'images', f))
 
 
 class TrainData(Dataset):
@@ -86,7 +95,7 @@ class TrainData(Dataset):
     def __getitem__(self, idx):
         _idx = self.train_idxs[idx]
 
-        fn = all_files[_idx]
+        fn = train_files[_idx]
 
         img = cv2.imread(fn, cv2.IMREAD_COLOR)
         img2 = cv2.imread(fn.replace('_pre_disaster', '_post_disaster'), cv2.IMREAD_COLOR)
@@ -240,10 +249,10 @@ class TrainData(Dataset):
         msk = (msk > 127)
 
         msk[..., 0] = False
-        msk[..., 1] = dilation(msk[..., 1], footprint_rectangle((5, 5)))
-        msk[..., 2] = dilation(msk[..., 2], footprint_rectangle((5, 5)))
-        msk[..., 3] = dilation(msk[..., 3], footprint_rectangle((5, 5)))
-        msk[..., 4] = dilation(msk[..., 4], footprint_rectangle((5, 5)))
+        msk[..., 1] = dilation(msk[..., 1], rectangle(5, 5))
+        msk[..., 2] = dilation(msk[..., 2], rectangle(5, 5))
+        msk[..., 3] = dilation(msk[..., 3], rectangle(5, 5))
+        msk[..., 4] = dilation(msk[..., 4], rectangle(5, 5))
         msk[..., 1][msk[..., 2:].max(axis=2)] = False
         msk[..., 3][msk[..., 2]] = False
         msk[..., 4][msk[..., 2]] = False
@@ -275,7 +284,7 @@ class ValData(Dataset):
     def __getitem__(self, idx):
         _idx = self.image_idxs[idx]
 
-        fn = all_files[_idx]
+        fn = val_files[_idx]
 
         img = cv2.imread(fn, cv2.IMREAD_COLOR)
         img2 = cv2.imread(fn.replace('_pre_disaster', '_post_disaster'), cv2.IMREAD_COLOR)
@@ -459,6 +468,8 @@ if __name__ == '__main__':
     workers = config.train.num_workers
     lr = config.optimizer.lr
     weight_decay = config.optimizer.weight_decay
+    dice_weight = config.loss.dice_weight
+    focal_weight = config.loss.focal_weight
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
@@ -481,7 +492,7 @@ if __name__ == '__main__':
     snapshot_name = f'{model_name}{seed}_0'
 
     file_classes = []
-    for fn in tqdm(all_files):
+    for fn in tqdm(train_files):
         fl = np.zeros((4,), dtype=bool)
         msk1 = cv2.imread(fn.replace('/images/', '/masks/').replace('_pre_disaster', '_post_disaster'), cv2.IMREAD_UNCHANGED)
         for c in range(1, 5):
@@ -489,7 +500,9 @@ if __name__ == '__main__':
         file_classes.append(fl)
     file_classes = np.asarray(file_classes)
 
-    train_idxs0, val_idxs = train_test_split(np.arange(len(all_files)), test_size=0.1, random_state=seed)
+    # train_idxs0, val_idxs = train_test_split(np.arange(len(all_files)), test_size=0.1, random_state=seed)
+    train_idxs0 = np.arange(len(train_files))
+    val_idxs = np.arange(len(val_files))
 
     np.random.seed(seed + 321)
     random.seed(seed + 321)
@@ -532,7 +545,7 @@ if __name__ == '__main__':
     
     model = model.to(device)
 
-    seg_loss = ComboLoss({'dice': 1.0, 'focal': 12.0}, per_image=False).to(device)
+    seg_loss = ComboLoss({'dice': dice_weight, 'focal': focal_weight}, per_image=False).to(device)
     ce_loss = nn.CrossEntropyLoss().to(device)
 
     best_score = 0
