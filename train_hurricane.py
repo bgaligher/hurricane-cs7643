@@ -7,8 +7,9 @@ Edits:
     - Swapped out Apex for Autocast to execute training with mixed-precision
     - Integrated usage of config.yaml files for hyperparamters
     - Changed model forward pass method to take in 2 images as input (pre + post images)
-    - Add support for more than just cuda device
+    - Add support for more device types
     - Removed 90/10 train/test split of the training dataset and added support for using dedicated test set for validation
+    - Added storing json/csv for hyperparameters and training metrics
 
 References:
     1. https://docs.pytorch.org/docs/stable/notes/amp_examples.html#typical-mixed-precision-training
@@ -54,6 +55,8 @@ from sklearn.metrics import accuracy_score
 
 import argparse
 import yaml
+import json
+import csv
 from models.hurricane import HurricaneModel
 from utils.config import Config
 
@@ -324,8 +327,9 @@ class ValData(Dataset):
         return sample
 
 
-def validate(net, data_loader, device):
+def validate(net, data_loader, device, seg_loss):
     dices0 = []
+    val_losses = []
 
     tp = np.zeros((4,))
     fp = np.zeros((4,))
@@ -341,6 +345,14 @@ def validate(net, data_loader, device):
             post_img = sample["post_img"].to(device, non_blocking=True)
             msks = sample["msk"].numpy()
             out = net(pre_img, post_img)
+
+            loss0 = seg_loss(out[:, 0, ...], msks[:, 0, ...])
+            loss1 = seg_loss(out[:, 1, ...], msks[:, 1, ...])
+            loss2 = seg_loss(out[:, 2, ...], msks[:, 2, ...])
+            loss3 = seg_loss(out[:, 3, ...], msks[:, 3, ...])
+            loss4 = seg_loss(out[:, 4, ...], msks[:, 4, ...])
+            loss = 0.05 * loss0 + 0.2 * loss1 + 0.8 * loss2 + 0.7 * loss3 + 0.4 * loss4
+            val_losses.update(loss.item(), pre_img.size(0))
 
             msk_pred = torch.sigmoid(out[:, 0, ...]).cpu().numpy() > 0.3
             msk_damage_pred = torch.sigmoid(out).cpu().numpy()[:, 1:, ...]
@@ -367,23 +379,23 @@ def validate(net, data_loader, device):
 
     sc = 0.3 * d0 + 0.7 * f1
     print("Val Score: {}, Dice: {}, F1: {}, F1_0: {}, F1_1: {}, F1_2: {}, F1_3: {}".format(sc, d0, f1, f1_sc[0], f1_sc[1], f1_sc[2], f1_sc[3]))
-    return sc
+    return (sc, d0, f1, f1_sc[0], f1_sc[1], f1_sc[2], f1_sc[3], val_losses.avg)
 
 
-def evaluate_val(data_val, best_score, model, snapshot_name, current_epoch, device):
+def evaluate_val(data_val, best_score, model, snapshot_name, current_epoch, device, seg_loss):
     model = model.eval()
-    d = validate(model, data_loader=data_val, device=device)
+    val_data = validate(model, data_loader=data_val, device=device, seg_loss=seg_loss)
 
-    if d > best_score:
+    if val_data[0] > best_score:
         torch.save({
             'epoch': current_epoch + 1,
             'state_dict': model.state_dict(),
-            'best_score': d,
+            'best_score': val_data[0],
         }, path.join(models_folder, snapshot_name + '_best'))
-        best_score = d
+        best_score = val_data[0]
 
-    print("score: {}\tscore_best: {}".format(d, best_score))
-    return best_score
+    print("score: {}\tscore_best: {}".format(val_data[0], best_score))
+    return best_score, val_data
 
 
 def train_epoch(current_epoch, seg_loss, ce_loss, model, optimizer, scheduler, train_data_loader, scaler, device):
@@ -447,6 +459,8 @@ def train_epoch(current_epoch, seg_loss, ce_loss, model, optimizer, scheduler, t
 
     print("epoch: {}; lr {:.7f}; Loss {loss.avg:.4f}; loss2 {loss1.avg:.4f}; Dice {dice.avg:.4f}".format(
             current_epoch, scheduler.get_lr()[-1], loss=losses, loss1=losses1, dice=dices))
+    
+    return losses.avg
 
 
 if __name__ == '__main__':
@@ -455,7 +469,12 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=42, help="random seed for reproducibility (default: 42)")
     parser.add_argument('--config_file', type=str, default='configs/config_hurricane.yaml', help="path to YAML config")
     parser.add_argument('--output_dir', type=str, default='output/hurricane', help="path to output directory")
+    parser.add_argument('--job_id', type=str, default='0', help='SLURM job ID')
     args = parser.parse_args()
+
+    seed = args.seed
+    output_dir = args.output_dir
+    job_id = args.job_id
 
     # Load YAML configuration
     with open(args.config_file, 'r') as file:
@@ -484,12 +503,26 @@ if __name__ == '__main__':
     t0 = timeit.default_timer()
 
     makedirs(models_folder, exist_ok=True)
-    
-    seed = args.seed
+    makedirs(output_dir, exist_ok=True)
 
     cudnn.benchmark = True
 
-    snapshot_name = f'{model_name}{seed}_0'
+    snapshot_name = f'{model_name}_{seed}_{job_id}'
+
+    # Create json with hyperparameters from run
+    hp_json_fn = path.join(output_dir, f'{snapshot_name}_hyperparams.json')
+    hp_json_data = {
+        "trial": snapshot_name,
+        "Model": model_name,
+        "batch_size": batch_size,
+        "epochs": epochs,
+        "learning_rate": lr,
+        "weight_decay": weight_decay,
+        "dice_weight": dice_weight,
+        "focal_weight": focal_weight
+    }
+    with open(hp_json_fn, "w") as json_file:
+        json.dump(hp_json_data,json_file, indent=4)
 
     file_classes = []
     for fn in tqdm(train_files):
@@ -500,7 +533,6 @@ if __name__ == '__main__':
         file_classes.append(fl)
     file_classes = np.asarray(file_classes)
 
-    # train_idxs0, val_idxs = train_test_split(np.arange(len(all_files)), test_size=0.1, random_state=seed)
     train_idxs0 = np.arange(len(train_files))
     val_idxs = np.arange(len(val_files))
 
@@ -548,15 +580,24 @@ if __name__ == '__main__':
     seg_loss = ComboLoss({'dice': dice_weight, 'focal': focal_weight}, per_image=False).to(device)
     ce_loss = nn.CrossEntropyLoss().to(device)
 
+    # Create csv to save training data to
+    data_headers = ['Epoch', 'Train Loss', 'Val Loss', 'Dice', 'F1 (Harmonic Mean)', 'F1 (None)', 'F1 (Minor)', 'F1 (Major)', 'F1 (Destroyed)', 'Val Score', 'Best Score']
+    training_data_file = path.join(output_dir, f'{snapshot_name}_metrics.csv')
+    with open(training_data_file, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(data_headers)
+
     best_score = 0
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
     for epoch in range(epochs):
-        train_epoch(epoch, seg_loss, ce_loss, model, optimizer, scheduler, train_data_loader, scaler, device)
+        train_loss = train_epoch(epoch, seg_loss, ce_loss, model, optimizer, scheduler, train_data_loader, scaler, device)
         if epoch % 2 == 0:
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
-            best_score = evaluate_val(val_data_loader, best_score, model, snapshot_name, epoch, device)
+            best_score, val_data = evaluate_val(val_data_loader, best_score, model, snapshot_name, epoch, device, seg_loss)
+            sc, d0, f1, f1_0, f1_1, f1_2, f1_3, val_loss = val_data
+            writer.writerow([epoch+1, train_loss, val_loss, d0, f1, f1_0, f1_1, f1_2, f1_3, sc, best_score])
 
     elapsed = timeit.default_timer() - t0
     print('Time: {:.3f} min'.format(elapsed / 60))
