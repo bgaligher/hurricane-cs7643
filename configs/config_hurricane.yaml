@@ -2,10 +2,11 @@ model:
   name: 'hurricane'
   freeze_encoder: true
   output_size: 5
+  dropout_weight: 0
 
 train:
-  batch_size: 1
-  n_epochs: 1
+  batch_size: 32
+  n_epochs: 50
   num_workers: 4
 
 optimizer:
@@ -15,4 +16,4 @@ optimizer:
 
 loss:
   dice_weight: 1.0
-  focal_weight: 6.0
+  focal_weight: 8.0

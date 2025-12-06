@@ -14,6 +14,7 @@ Edits:
 References:
     1. https://docs.pytorch.org/docs/stable/notes/amp_examples.html#typical-mixed-precision-training
 """
+
 import warnings
 warnings.filterwarnings('ignore', category=UserWarning)
 
@@ -36,8 +37,8 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 import torch.optim.lr_scheduler as lr_scheduler
 
-from xview2_1st_place_solution.adamw import AdamW
-from xview2_1st_place_solution.losses import dice_round, ComboLoss
+from utils.adamw import AdamW
+from utils.losses import dice_round, ComboLoss
 
 from tqdm import tqdm
 import timeit
@@ -45,19 +46,15 @@ import cv2
 
 # from imgaug import augmenters as iaa
 
-from xview2_1st_place_solution.utils import *
+from utils.utils import *
 
 from skimage.morphology import rectangle, dilation
-
-from sklearn.model_selection import train_test_split
-
-from sklearn.metrics import accuracy_score
 
 import argparse
 import yaml
 import json
 import csv
-from models.hurricane import HurricaneModel
+from models.hurricane import HurricaneModel, HurricaneAddModel, HurricaneCatModel, HurricaneDOModel, HurricaneLoRAModel
 from utils.config import Config
 
 cv2.setNumThreads(0)
@@ -232,15 +229,6 @@ class TrainData(Dataset):
                 img2 = brightness(img2, 0.9 + random.random() * 0.2)
             elif random.random() > 0.985:
                 img2 = contrast(img2, 0.9 + random.random() * 0.2)
-
-                
-        # if random.random() > 0.983:
-        #     el_det = self.elastic.to_deterministic()
-        #     img = el_det.augment_image(img)
-
-        # if random.random() > 0.983:
-        #     el_det = self.elastic.to_deterministic()
-        #     img2 = el_det.augment_image(img2)
 
         msk0 = msk0[..., np.newaxis]
         msk1 = msk1[..., np.newaxis]
@@ -434,7 +422,7 @@ def train_epoch(current_epoch, seg_loss, ce_loss, model, optimizer, scheduler, t
             dice_sc = 1 - dice_round(_probs, msks[:, 0, ...])
 
         losses.update(loss.item(), pre_imgs.size(0))
-        losses1.update(loss2.item(), pre_imgs.size(0)) #loss5
+        losses1.update(loss2.item(), pre_imgs.size(0))
 
         dices.update(dice_sc, pre_imgs.size(0))
 
@@ -482,6 +470,7 @@ if __name__ == '__main__':
         config = Config(config_dict=config_dict)
     
     model_name = config.model.name
+    dropout = config.model.dropout_rate
     batch_size = config.train.batch_size
     epochs = config.train.n_epochs
     workers = config.train.num_workers
@@ -514,6 +503,7 @@ if __name__ == '__main__':
     hp_json_data = {
         "trial": snapshot_name,
         "Model": model_name,
+        "dropout_weight": dropout,
         "batch_size": batch_size,
         "epochs": epochs,
         "learning_rate": lr,
@@ -559,7 +549,16 @@ if __name__ == '__main__':
     train_data_loader = DataLoader(data_train, batch_size=batch_size, num_workers=workers, shuffle=True, pin_memory=False, drop_last=True)
     val_data_loader = DataLoader(val_train, batch_size=batch_size, num_workers=workers, shuffle=False, pin_memory=False)
 
-    model = HurricaneModel().to(device)
+    if model_name == 'hurricane':
+        model = HurricaneModel().to(device)
+    elif model_name == 'hurricane_c':
+        model = HurricaneCatModel(dropout_rate=dropout).to(device)
+    elif model_name == 'hurricane_a':
+        model = HurricaneAddModel(dropout_rate=dropout).to(device)
+    elif model_name == 'hurricane_do':
+        model = HurricaneDOModel(dropout_rate=dropout).to(device)
+    elif model_name == 'hurricane_lora':
+        model = HurricaneLoRAModel().to(device)
 
     params = model.parameters()
 

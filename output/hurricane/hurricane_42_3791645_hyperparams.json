@@ -1,0 +1,11 @@
+{
+    "trial": "hurricane_42_3791645",
+    "Model": "hurricane",
+    "dropout_rate": 0,
+    "batch_size": 16,
+    "epochs": 30,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.001,
+    "dice_weight": 5.0,
+    "focal_weight": 3.0
+}

@@ -1,8 +1,8 @@
 """
-Original code from: https://github.com/DIUx-xView/xView2_first_place
+File from this repo: https://github.com/DIUx-xView/xView2_first_place
 
 Edits:
-    - Modified training directory
+    - Modified training directories for wind data
 
 """
 
