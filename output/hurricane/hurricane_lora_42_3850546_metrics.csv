@@ -1,1 +1,0 @@
-Epoch,Train Loss,Val Loss,Dice,F1,F1 (None),F1 (Minor),F1 (Major),F1 (Destroyed),Val Score,Best Score
