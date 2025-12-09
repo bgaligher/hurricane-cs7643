@@ -1,0 +1,77 @@
+---------------------------------------
+Begin Slurm Prolog: Dec-02-2025 14:09:39
+Job ID:    3757634
+User ID:   kalyono3
+Account:   coc
+Job name:  xv2_wind_hold
+Partition: coc-gpu
+QOS:       coc-ice
+---------------------------------------
+Starting holdout evaluation job 3757634 on atl1-1-02-010-33-0
+Tue Dec  2 14:09:39 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:AF:00.0 Off |                    0 |
+| N/A   41C    P0             30W /  250W |       0MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+main.py:9: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="conf", config_name="config")
+Traceback (most recent call last):
+  File "main.py", line 43, in <module>
+    main()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 105, in run
+    cfg = self.compose_config(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 594, in compose_config
+    cfg = self.config_loader.load_configuration(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/config_loader_impl.py", line 142, in load_configuration
+    return self._load_configuration_impl(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/config_loader_impl.py", line 244, in _load_configuration_impl
+    parsed_overrides, caching_repo = self._parse_overrides_and_create_caching_repo(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/config_loader_impl.py", line 228, in _parse_overrides_and_create_caching_repo
+    parsed_overrides = parser.parse_overrides(overrides=overrides)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/override_parser/overrides_parser.py", line 96, in parse_overrides
+    raise OverrideParseException(
+hydra.errors.OverrideParseException: mismatched input '=' expecting <EOF>
+See https://hydra.cc/docs/1.2/advanced/override_grammar/basic for details
+srun: error: atl1-1-02-010-33-0: task 0: Exited with exit code 1
+---------------------------------------
+Begin Slurm Epilog: Dec-02-2025 14:11:22
+Job ID:        3757634
+User ID:       kalyono3
+Account:       coc
+Job name:      xv2_wind_hold
+Resources:     cpu=4,gres/gpu:v100=1,mem=16G,node=1
+Rsrc Used:     cput=00:06:52,vmem=0,walltime=00:01:43,mem=47876K,energy_used=0
+Partition:     coc-gpu
+QOS:           coc-ice
+Nodes:         atl1-1-02-010-33-0
+---------------------------------------

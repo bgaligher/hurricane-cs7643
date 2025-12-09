@@ -1,0 +1,368 @@
+---------------------------------------
+Begin Slurm Prolog: Dec-09-2025 16:34:16
+Job ID:    3963763
+User ID:   kalyono3
+Account:   coc
+Job name:  xv2_wind_hold
+Partition: coc-gpu
+QOS:       coc-ice
+---------------------------------------
+Starting EVAL job 3963763 on atl1-1-01-002-6-0
+Tue Dec  9 16:34:16 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-32GB           On  |   00000000:AF:00.0 Off |                    0 |
+| N/A   47C    P0             29W /  250W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Evaluating checkpoint:
+/home/hice1/kalyono3/scratch/weights/checkpoints/wind_supervised_lr0.0002_wd1e-06_bs8_seed42-epoch=26-val_loss=0.26.ckpt
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+eval_main.py:9: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="conf", config_name="config")
+Traceback (most recent call last):
+  File "eval_main.py", line 34, in <module>
+    main()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 105, in run
+    cfg = self.compose_config(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 594, in compose_config
+    cfg = self.config_loader.load_configuration(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/config_loader_impl.py", line 142, in load_configuration
+    return self._load_configuration_impl(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/config_loader_impl.py", line 244, in _load_configuration_impl
+    parsed_overrides, caching_repo = self._parse_overrides_and_create_caching_repo(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/config_loader_impl.py", line 228, in _parse_overrides_and_create_caching_repo
+    parsed_overrides = parser.parse_overrides(overrides=overrides)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/override_parser/overrides_parser.py", line 96, in parse_overrides
+    raise OverrideParseException(
+hydra.errors.OverrideParseException: mismatched input '=' expecting <EOF>
+See https://hydra.cc/docs/1.2/advanced/override_grammar/basic for details
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: atl1-1-01-002-6-0: task 0: Exited with exit code 1
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+srun: error: io_init_msg_unpack: unpack error
+---------------------------------------
+Begin Slurm Epilog: Dec-09-2025 16:36:04
+Job ID:        3963763
+User ID:       kalyono3
+Account:       coc
+Job name:      xv2_wind_hold
+Resources:     cpu=4,gres/gpu:v100=1,mem=16G,node=1
+Rsrc Used:     cput=00:07:08,vmem=0,walltime=00:01:47,mem=48112K,energy_used=0
+Partition:     coc-gpu
+QOS:           coc-ice
+Nodes:         atl1-1-01-002-6-0
+---------------------------------------

@@ -1,0 +1,101 @@
+---------------------------------------
+Begin Slurm Prolog: Dec-09-2025 16:42:19
+Job ID:    3963791
+User ID:   kalyono3
+Account:   coc
+Job name:  xv2_wind_hold
+Partition: coc-gpu
+QOS:       coc-ice
+---------------------------------------
+Starting EVAL job 3963791 on atl1-1-02-009-31-0
+Tue Dec  9 16:42:19 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:3B:00.0 Off |                    0 |
+| N/A   45C    P0             27W /  250W |       0MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Evaluating checkpoint:
+/home/hice1/kalyono3/scratch/weights/checkpoints/wind_supervised_lr0.0002_wd1e-06_bs8_seed42-epoch=26-val_loss=0.26.ckpt
+eval_main.py:8: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="conf", config_name="config")
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'config': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:415: UserWarning: In config: Invalid overriding of hydra/job_logging:
+Default list overrides requires 'override' keyword.
+See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/defaults_list_override for more information.
+
+  deprecation_warning(msg)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:415: UserWarning: In config: Invalid overriding of hydra/hydra_logging:
+Default list overrides requires 'override' keyword.
+See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/defaults_list_override for more information.
+
+  deprecation_warning(msg)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[rank: 0] Global seed set to 42
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+[eval] Evaluating Lightning checkpoint:
+       /home/hice1/kalyono3/scratch/weights/checkpoints/wind_supervised_lr0.0002_wd1e-06_bs8_seed42-epoch=26-val_loss=0.26.ckpt
+Error executing job with overrides: ['data=supervised_data_holdout', 'trainer.devices=1', 'group=wind_supervised_holdout']
+Traceback (most recent call last):
+  File "eval_main.py", line 37, in <module>
+    main()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "eval_main.py", line 30, in main
+    trainer.test(model=ModelClass, datamodule=data_module, ckpt_path=ckpt_path)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 733, in test
+    model = _maybe_unwrap_optimized(model)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/compile.py", line 125, in _maybe_unwrap_optimized
+    raise TypeError(
+TypeError: `model` must be a `LightningModule` or `torch._dynamo.OptimizedModule`, got `type`
+---------------------------------------
+Begin Slurm Epilog: Dec-09-2025 16:44:26
+Job ID:        3963791
+User ID:       kalyono3
+Account:       coc
+Job name:      xv2_wind_hold
+Resources:     cpu=4,gres/gpu:v100=1,mem=16G,node=1
+Rsrc Used:     cput=00:08:28,vmem=0,walltime=00:02:07,mem=794812K,energy_used=0
+Partition:     coc-gpu
+QOS:           coc-ice
+Nodes:         atl1-1-02-009-31-0
+---------------------------------------

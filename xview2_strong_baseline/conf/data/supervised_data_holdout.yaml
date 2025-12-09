@@ -1,0 +1,26 @@
+# conf/data/supervised_data_holdout.yaml
+_target_: datasets.supervised_dataset.DirSplitSLDataModule
+
+train_dirs: []     # not used
+val_dirs: []       # not used
+test_dirs:
+  - '/home/hice1/kalyono3/scratch/data_wind/wind_hold'
+
+labeled_batch_size: 8
+num_workers: 6
+
+labeled_transforms:
+  _target_: torchvision.transforms.Compose
+  transforms:
+    - _target_: torchvision.transforms.RandomHorizontalFlip
+      p: 0.5
+    - _target_: torchvision.transforms.RandomApply
+      p: 0.6
+      transforms:
+        - _target_: torchvision.transforms.RandomAffine
+          degrees: [-10, 10]
+          scale: [0.9, 1.1]
+          translate: [0.1, 0.1]
+    - _target_: datasets.transforms.ResizeCrop
+      p: 0.2
+      input_size: 608

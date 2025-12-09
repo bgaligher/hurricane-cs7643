@@ -1,0 +1,147 @@
+---------------------------------------
+Begin Slurm Prolog: Dec-02-2025 05:21:14
+Job ID:    3739755
+User ID:   kalyono3
+Account:   coc
+Job name:  xv2_wind_train
+Partition: coc-gpu
+QOS:       coc-ice
+---------------------------------------
+Starting job 3739755 on atl1-1-02-009-33-0
+Tue Dec  2 05:21:14 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:3B:00.0 Off |                    0 |
+| N/A   46C    P0             28W /  250W |       0MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+main.py:9: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="conf", config_name="config")
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'config': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:415: UserWarning: In config: Invalid overriding of hydra/job_logging:
+Default list overrides requires 'override' keyword.
+See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/defaults_list_override for more information.
+
+  deprecation_warning(msg)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:415: UserWarning: In config: Invalid overriding of hydra/hydra_logging:
+Default list overrides requires 'override' keyword.
+See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/defaults_list_override for more information.
+
+  deprecation_warning(msg)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[rank: 0] Global seed set to 42
+using weights from ResNet34_Weights.IMAGENET1K_V1
+Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /home/hice1/kalyono3/.cache/torch/hub/checkpoints/resnet34-b627a593.pth
+  0%|          | 0.00/83.3M [00:00<?, ?B/s] 48%|████▊     | 39.9M/83.3M [00:00<00:00, 418MB/s] 99%|█████████▊| 82.0M/83.3M [00:00<00:00, 432MB/s]100%|██████████| 83.3M/83.3M [00:00<00:00, 428MB/s]
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'loss_fn' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['loss_fn'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'train_metric' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['train_metric'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'val_metric' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['val_metric'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'test_metric' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['test_metric'])`.
+  rank_zero_warn(
+Error executing job with overrides: ['data=supervised_data', 'trainer.devices=1', 'trainer.strategy=null', 'group=wind_supervised']
+wandb: ERROR api_key not configured (no-tty). call wandb.login(key=[your_api_key])
+Traceback (most recent call last):
+  File "main.py", line 34, in <module>
+    main()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "main.py", line 15, in main
+    wandb.init(project=cfg.logger.project,
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1166, in init
+    raise e
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1143, in init
+    wi.setup(kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 289, in setup
+    wandb_login._login(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_login.py", line 298, in _login
+    wlogin.prompt_api_key()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_login.py", line 228, in prompt_api_key
+    raise UsageError("api_key not configured (no-tty). call " + directive)
+wandb.errors.UsageError: api_key not configured (no-tty). call wandb.login(key=[your_api_key])
+Traceback (most recent call last):
+  File "main.py", line 34, in <module>
+    main()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "main.py", line 15, in main
+    wandb.init(project=cfg.logger.project,
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1166, in init
+    raise e
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1143, in init
+    wi.setup(kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 289, in setup
+    wandb_login._login(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_login.py", line 298, in _login
+    wlogin.prompt_api_key()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/wandb/sdk/wandb_login.py", line 228, in prompt_api_key
+    raise UsageError("api_key not configured (no-tty). call " + directive)
+wandb.errors.UsageError: api_key not configured (no-tty). call wandb.login(key=[your_api_key])
+srun: error: atl1-1-02-009-33-0: task 0: Exited with exit code 1
+---------------------------------------
+Begin Slurm Epilog: Dec-02-2025 05:22:56
+Job ID:        3739755
+User ID:       kalyono3
+Account:       coc
+Job name:      xv2_wind_train
+Resources:     cpu=4,gres/gpu:v100=1,mem=16G,node=1
+Rsrc Used:     cput=00:06:48,vmem=0,walltime=00:01:42,mem=47696K,energy_used=0
+Partition:     coc-gpu
+QOS:           coc-ice
+Nodes:         atl1-1-02-009-33-0
+---------------------------------------

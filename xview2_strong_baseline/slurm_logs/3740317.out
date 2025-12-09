@@ -1,0 +1,285 @@
+---------------------------------------
+Begin Slurm Prolog: Dec-02-2025 05:34:37
+Job ID:    3740317
+User ID:   kalyono3
+Account:   coc
+Job name:  xv2_wind_train
+Partition: coc-gpu
+QOS:       coc-ice
+---------------------------------------
+Starting job 3740317 on atl1-1-02-009-33-0
+Tue Dec  2 05:34:37 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:AF:00.0 Off |                    0 |
+| N/A   40C    P0             25W /  250W |       0MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+main.py:9: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="conf", config_name="config")
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'config': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:415: UserWarning: In config: Invalid overriding of hydra/job_logging:
+Default list overrides requires 'override' keyword.
+See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/defaults_list_override for more information.
+
+  deprecation_warning(msg)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/defaults_list.py:415: UserWarning: In config: Invalid overriding of hydra/hydra_logging:
+Default list overrides requires 'override' keyword.
+See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/defaults_list_override for more information.
+
+  deprecation_warning(msg)
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[rank: 0] Global seed set to 42
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'loss_fn' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['loss_fn'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'train_metric' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['train_metric'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'val_metric' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['val_metric'])`.
+  rank_zero_warn(
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/utilities/parsing.py:196: UserWarning: Attribute 'test_metric' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['test_metric'])`.
+  rank_zero_warn(
+wandb: Tracking run with wandb version 0.15.8
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/loggers/wandb.py:396: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+[rank: 0] Global seed set to 42
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+using weights from ResNet34_Weights.IMAGENET1K_V1
+[[36m2025-12-02 05:35:04,407[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 0[0m
+[[36m2025-12-02 05:35:04,408[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.[0m
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name         | Type              | Params
+---------------------------------------------------
+0 | model        | Res34_Unet_Double | 25.7 M
+1 | loss_fn      | ComboLoss         | 0     
+2 | train_metric | MultilabelF1Score | 0     
+3 | val_metric   | MultilabelF1Score | 0     
+4 | test_metric  | ModuleList        | 0     
+---------------------------------------------------
+25.7 M    Trainable params
+0         Non-trainable params
+25.7 M    Total params
+102.914   Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
+/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 6 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Sanity Checking: 0it [00:00, ?it/s]Sanity Checking:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:16<00:16, 16.84s/it]Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:17<00:00,  8.59s/it]                                                                           Training: 0it [00:00, ?it/s]Training:   0%|          | 0/147 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/147 [00:00<?, ?it/s] Epoch 0:   1%|          | 1/147 [00:11<26:53, 11.05s/it]Epoch 0:   1%|          | 1/147 [00:11<26:53, 11.05s/it, v_num=p9xh, train_loss_step=1.230][[36m2025-12-02 05:35:56,320[0m][[34mtorch.nn.parallel.distributed[0m][[32mINFO[0m] - Reducer buckets have been rebuilt in this iteration.[0m
+Epoch 0:   1%|▏         | 2/147 [00:11<13:42,  5.67s/it, v_num=p9xh, train_loss_step=1.230]Epoch 0:   1%|▏         | 2/147 [00:11<13:42,  5.67s/it, v_num=p9xh, train_loss_step=1.110]Epoch 0:   2%|▏         | 3/147 [00:11<09:18,  3.88s/it, v_num=p9xh, train_loss_step=1.110]Epoch 0:   2%|▏         | 3/147 [00:11<09:18,  3.88s/it, v_num=p9xh, train_loss_step=1.030]Epoch 0:   3%|▎         | 4/147 [00:11<07:05,  2.98s/it, v_num=p9xh, train_loss_step=1.030]Epoch 0:   3%|▎         | 4/147 [00:11<07:05,  2.98s/it, v_num=p9xh, train_loss_step=0.969]Epoch 0:   3%|▎         | 5/147 [00:12<05:48,  2.45s/it, v_num=p9xh, train_loss_step=0.969]Epoch 0:   3%|▎         | 5/147 [00:12<05:48,  2.45s/it, v_num=p9xh, train_loss_step=0.954]Epoch 0:   4%|▍         | 6/147 [00:12<04:54,  2.09s/it, v_num=p9xh, train_loss_step=0.954]Epoch 0:   4%|▍         | 6/147 [00:12<04:54,  2.09s/it, v_num=p9xh, train_loss_step=0.939]Epoch 0:   5%|▍         | 7/147 [00:12<04:16,  1.83s/it, v_num=p9xh, train_loss_step=0.939]Epoch 0:   5%|▍         | 7/147 [00:12<04:16,  1.83s/it, v_num=p9xh, train_loss_step=0.927]Epoch 0:   5%|▌         | 8/147 [00:13<03:48,  1.64s/it, v_num=p9xh, train_loss_step=0.927]Epoch 0:   5%|▌         | 8/147 [00:13<03:48,  1.64s/it, v_num=p9xh, train_loss_step=0.934]Epoch 0:   6%|▌         | 9/147 [00:13<03:25,  1.49s/it, v_num=p9xh, train_loss_step=0.934]Epoch 0:   6%|▌         | 9/147 [00:13<03:25,  1.49s/it, v_num=p9xh, train_loss_step=1.040]Epoch 0:   7%|▋         | 10/147 [00:13<03:07,  1.37s/it, v_num=p9xh, train_loss_step=1.040]Epoch 0:   7%|▋         | 10/147 [00:13<03:07,  1.37s/it, v_num=p9xh, train_loss_step=0.885]Epoch 0:   7%|▋         | 11/147 [00:13<02:52,  1.27s/it, v_num=p9xh, train_loss_step=0.885]Epoch 0:   7%|▋         | 11/147 [00:13<02:52,  1.27s/it, v_num=p9xh, train_loss_step=0.874]Epoch 0:   8%|▊         | 12/147 [00:14<02:40,  1.19s/it, v_num=p9xh, train_loss_step=0.874]Epoch 0:   8%|▊         | 12/147 [00:14<02:40,  1.19s/it, v_num=p9xh, train_loss_step=0.891]Epoch 0:   9%|▉         | 13/147 [00:14<02:29,  1.12s/it, v_num=p9xh, train_loss_step=0.891]Epoch 0:   9%|▉         | 13/147 [00:14<02:29,  1.12s/it, v_num=p9xh, train_loss_step=0.860]Epoch 0:  10%|▉         | 14/147 [00:15<02:31,  1.14s/it, v_num=p9xh, train_loss_step=0.860]Epoch 0:  10%|▉         | 14/147 [00:15<02:31,  1.14s/it, v_num=p9xh, train_loss_step=0.844]Epoch 0:  10%|█         | 15/147 [00:16<02:23,  1.09s/it, v_num=p9xh, train_loss_step=0.844]Epoch 0:  10%|█         | 15/147 [00:16<02:23,  1.09s/it, v_num=p9xh, train_loss_step=0.884]Epoch 0:  11%|█         | 16/147 [00:16<02:15,  1.04s/it, v_num=p9xh, train_loss_step=0.884]Epoch 0:  11%|█         | 16/147 [00:16<02:15,  1.04s/it, v_num=p9xh, train_loss_step=0.771]Epoch 0:  12%|█▏        | 17/147 [00:16<02:08,  1.01it/s, v_num=p9xh, train_loss_step=0.771]Epoch 0:  12%|█▏        | 17/147 [00:16<02:08,  1.01it/s, v_num=p9xh, train_loss_step=0.843]Epoch 0:  12%|█▏        | 18/147 [00:17<02:02,  1.05it/s, v_num=p9xh, train_loss_step=0.843]Epoch 0:  12%|█▏        | 18/147 [00:17<02:02,  1.05it/s, v_num=p9xh, train_loss_step=0.859]Epoch 0:  13%|█▎        | 19/147 [00:17<01:57,  1.09it/s, v_num=p9xh, train_loss_step=0.859]Epoch 0:  13%|█▎        | 19/147 [00:17<01:57,  1.09it/s, v_num=p9xh, train_loss_step=0.829]Epoch 0:  14%|█▎        | 20/147 [00:20<02:11,  1.04s/it, v_num=p9xh, train_loss_step=0.829]Epoch 0:  14%|█▎        | 20/147 [00:20<02:11,  1.04s/it, v_num=p9xh, train_loss_step=0.778]Epoch 0:  14%|█▍        | 21/147 [00:21<02:06,  1.00s/it, v_num=p9xh, train_loss_step=0.778]Epoch 0:  14%|█▍        | 21/147 [00:21<02:06,  1.00s/it, v_num=p9xh, train_loss_step=0.721]Epoch 0:  15%|█▍        | 22/147 [00:21<02:01,  1.03it/s, v_num=p9xh, train_loss_step=0.721]Epoch 0:  15%|█▍        | 22/147 [00:21<02:01,  1.03it/s, v_num=p9xh, train_loss_step=0.879]Epoch 0:  16%|█▌        | 23/147 [00:21<01:57,  1.06it/s, v_num=p9xh, train_loss_step=0.879]Epoch 0:  16%|█▌        | 23/147 [00:21<01:57,  1.06it/s, v_num=p9xh, train_loss_step=0.815]Epoch 0:  16%|█▋        | 24/147 [00:22<01:53,  1.09it/s, v_num=p9xh, train_loss_step=0.815]Epoch 0:  16%|█▋        | 24/147 [00:22<01:53,  1.09it/s, v_num=p9xh, train_loss_step=0.752]Epoch 0:  17%|█▋        | 25/147 [00:22<01:49,  1.12it/s, v_num=p9xh, train_loss_step=0.752]Epoch 0:  17%|█▋        | 25/147 [00:22<01:49,  1.12it/s, v_num=p9xh, train_loss_step=0.758]Epoch 0:  18%|█▊        | 26/147 [00:24<01:55,  1.05it/s, v_num=p9xh, train_loss_step=0.758]Epoch 0:  18%|█▊        | 26/147 [00:24<01:55,  1.05it/s, v_num=p9xh, train_loss_step=0.790]Epoch 0:  18%|█▊        | 27/147 [00:25<01:51,  1.08it/s, v_num=p9xh, train_loss_step=0.790]Epoch 0:  18%|█▊        | 27/147 [00:25<01:51,  1.08it/s, v_num=p9xh, train_loss_step=0.772]Epoch 0:  19%|█▉        | 28/147 [00:25<01:48,  1.10it/s, v_num=p9xh, train_loss_step=0.772]Epoch 0:  19%|█▉        | 28/147 [00:25<01:48,  1.10it/s, v_num=p9xh, train_loss_step=0.757]Epoch 0:  20%|█▉        | 29/147 [00:25<01:45,  1.12it/s, v_num=p9xh, train_loss_step=0.757]Epoch 0:  20%|█▉        | 29/147 [00:25<01:45,  1.12it/s, v_num=p9xh, train_loss_step=0.642]Epoch 0:  20%|██        | 30/147 [00:26<01:42,  1.14it/s, v_num=p9xh, train_loss_step=0.642]Epoch 0:  20%|██        | 30/147 [00:26<01:42,  1.14it/s, v_num=p9xh, train_loss_step=0.801]Epoch 0:  21%|██        | 31/147 [00:26<01:39,  1.17it/s, v_num=p9xh, train_loss_step=0.801]Epoch 0:  21%|██        | 31/147 [00:26<01:39,  1.17it/s, v_num=p9xh, train_loss_step=0.726]Epoch 0:  22%|██▏       | 32/147 [00:30<01:47,  1.07it/s, v_num=p9xh, train_loss_step=0.726]Epoch 0:  22%|██▏       | 32/147 [00:30<01:47,  1.07it/s, v_num=p9xh, train_loss_step=0.749]Epoch 0:  22%|██▏       | 33/147 [00:30<01:44,  1.09it/s, v_num=p9xh, train_loss_step=0.749]Epoch 0:  22%|██▏       | 33/147 [00:30<01:44,  1.09it/s, v_num=p9xh, train_loss_step=0.720]Epoch 0:  23%|██▎       | 34/147 [00:30<01:41,  1.11it/s, v_num=p9xh, train_loss_step=0.720]Epoch 0:  23%|██▎       | 34/147 [00:30<01:41,  1.11it/s, v_num=p9xh, train_loss_step=0.726]Epoch 0:  24%|██▍       | 35/147 [00:30<01:38,  1.13it/s, v_num=p9xh, train_loss_step=0.726]Epoch 0:  24%|██▍       | 35/147 [00:30<01:38,  1.13it/s, v_num=p9xh, train_loss_step=0.706]Epoch 0:  24%|██▍       | 36/147 [00:31<01:36,  1.16it/s, v_num=p9xh, train_loss_step=0.706]Epoch 0:  24%|██▍       | 36/147 [00:31<01:36,  1.16it/s, v_num=p9xh, train_loss_step=0.682]Epoch 0:  25%|██▌       | 37/147 [00:31<01:33,  1.18it/s, v_num=p9xh, train_loss_step=0.682]Epoch 0:  25%|██▌       | 37/147 [00:31<01:33,  1.18it/s, v_num=p9xh, train_loss_step=0.677]Epoch 0:  26%|██▌       | 38/147 [00:34<01:38,  1.10it/s, v_num=p9xh, train_loss_step=0.677]Epoch 0:  26%|██▌       | 38/147 [00:34<01:38,  1.10it/s, v_num=p9xh, train_loss_step=0.687]Epoch 0:  27%|██▋       | 39/147 [00:34<01:36,  1.12it/s, v_num=p9xh, train_loss_step=0.687]Epoch 0:  27%|██▋       | 39/147 [00:34<01:36,  1.12it/s, v_num=p9xh, train_loss_step=0.738]Epoch 0:  27%|██▋       | 40/147 [00:35<01:33,  1.14it/s, v_num=p9xh, train_loss_step=0.738]Epoch 0:  27%|██▋       | 40/147 [00:35<01:33,  1.14it/s, v_num=p9xh, train_loss_step=0.613]Epoch 0:  28%|██▊       | 41/147 [00:35<01:31,  1.16it/s, v_num=p9xh, train_loss_step=0.613]Epoch 0:  28%|██▊       | 41/147 [00:35<01:31,  1.16it/s, v_num=p9xh, train_loss_step=0.540]Epoch 0:  29%|██▊       | 42/147 [00:35<01:29,  1.17it/s, v_num=p9xh, train_loss_step=0.540]Epoch 0:  29%|██▊       | 42/147 [00:35<01:29,  1.17it/s, v_num=p9xh, train_loss_step=0.725]Epoch 0:  29%|██▉       | 43/147 [00:36<01:27,  1.19it/s, v_num=p9xh, train_loss_step=0.725]Epoch 0:  29%|██▉       | 43/147 [00:36<01:27,  1.19it/s, v_num=p9xh, train_loss_step=0.698]Epoch 0:  30%|██▉       | 44/147 [00:38<01:29,  1.15it/s, v_num=p9xh, train_loss_step=0.698]Epoch 0:  30%|██▉       | 44/147 [00:38<01:29,  1.14it/s, v_num=p9xh, train_loss_step=0.736]Epoch 0:  31%|███       | 45/147 [00:38<01:27,  1.16it/s, v_num=p9xh, train_loss_step=0.736]Epoch 0:  31%|███       | 45/147 [00:38<01:27,  1.16it/s, v_num=p9xh, train_loss_step=0.663]Epoch 0:  31%|███▏      | 46/147 [00:39<01:26,  1.16it/s, v_num=p9xh, train_loss_step=0.663]Epoch 0:  31%|███▏      | 46/147 [00:39<01:26,  1.16it/s, v_num=p9xh, train_loss_step=0.593]Epoch 0:  32%|███▏      | 47/147 [00:39<01:24,  1.18it/s, v_num=p9xh, train_loss_step=0.593]Epoch 0:  32%|███▏      | 47/147 [00:39<01:24,  1.18it/s, v_num=p9xh, train_loss_step=0.399]Epoch 0:  33%|███▎      | 48/147 [00:40<01:22,  1.20it/s, v_num=p9xh, train_loss_step=0.399]Epoch 0:  33%|███▎      | 48/147 [00:40<01:22,  1.20it/s, v_num=p9xh, train_loss_step=0.529]Epoch 0:  33%|███▎      | 49/147 [00:40<01:20,  1.21it/s, v_num=p9xh, train_loss_step=0.529]Epoch 0:  33%|███▎      | 49/147 [00:40<01:20,  1.21it/s, v_num=p9xh, train_loss_step=0.415]Epoch 0:  34%|███▍      | 50/147 [00:43<01:24,  1.15it/s, v_num=p9xh, train_loss_step=0.415]Epoch 0:  34%|███▍      | 50/147 [00:43<01:24,  1.15it/s, v_num=p9xh, train_loss_step=0.549]Epoch 0:  35%|███▍      | 51/147 [00:43<01:22,  1.17it/s, v_num=p9xh, train_loss_step=0.549]Epoch 0:  35%|███▍      | 51/147 [00:43<01:22,  1.17it/s, v_num=p9xh, train_loss_step=0.679]Epoch 0:  35%|███▌      | 52/147 [00:44<01:20,  1.18it/s, v_num=p9xh, train_loss_step=0.679]Epoch 0:  35%|███▌      | 52/147 [00:44<01:20,  1.18it/s, v_num=p9xh, train_loss_step=0.696]Epoch 0:  36%|███▌      | 53/147 [00:44<01:18,  1.19it/s, v_num=p9xh, train_loss_step=0.696]Epoch 0:  36%|███▌      | 53/147 [00:44<01:18,  1.19it/s, v_num=p9xh, train_loss_step=0.492]Epoch 0:  37%|███▋      | 54/147 [00:44<01:17,  1.21it/s, v_num=p9xh, train_loss_step=0.492]Epoch 0:  37%|███▋      | 54/147 [00:44<01:17,  1.21it/s, v_num=p9xh, train_loss_step=0.571]Epoch 0:  37%|███▋      | 55/147 [00:45<01:15,  1.22it/s, v_num=p9xh, train_loss_step=0.571]Epoch 0:  37%|███▋      | 55/147 [00:45<01:15,  1.22it/s, v_num=p9xh, train_loss_step=0.486]Epoch 0:  38%|███▊      | 56/147 [00:47<01:17,  1.17it/s, v_num=p9xh, train_loss_step=0.486]Epoch 0:  38%|███▊      | 56/147 [00:47<01:17,  1.17it/s, v_num=p9xh, train_loss_step=0.654]Epoch 0:  39%|███▉      | 57/147 [00:48<01:15,  1.19it/s, v_num=p9xh, train_loss_step=0.654]Epoch 0:  39%|███▉      | 57/147 [00:48<01:15,  1.19it/s, v_num=p9xh, train_loss_step=0.671]Epoch 0:  39%|███▉      | 58/147 [00:48<01:14,  1.20it/s, v_num=p9xh, train_loss_step=0.671]Epoch 0:  39%|███▉      | 58/147 [00:48<01:14,  1.20it/s, v_num=p9xh, train_loss_step=0.559]Epoch 0:  40%|████      | 59/147 [00:48<01:12,  1.21it/s, v_num=p9xh, train_loss_step=0.559]Epoch 0:  40%|████      | 59/147 [00:48<01:12,  1.21it/s, v_num=p9xh, train_loss_step=0.524]Epoch 0:  41%|████      | 60/147 [00:49<01:11,  1.22it/s, v_num=p9xh, train_loss_step=0.524]Epoch 0:  41%|████      | 60/147 [00:49<01:11,  1.22it/s, v_num=p9xh, train_loss_step=0.586]Epoch 0:  41%|████▏     | 61/147 [00:49<01:09,  1.23it/s, v_num=p9xh, train_loss_step=0.586]Epoch 0:  41%|████▏     | 61/147 [00:49<01:09,  1.23it/s, v_num=p9xh, train_loss_step=0.544]Epoch 0:  42%|████▏     | 62/147 [00:51<01:11,  1.19it/s, v_num=p9xh, train_loss_step=0.544]Epoch 0:  42%|████▏     | 62/147 [00:51<01:11,  1.19it/s, v_num=p9xh, train_loss_step=0.846]Epoch 0:  43%|████▎     | 63/147 [00:52<01:09,  1.21it/s, v_num=p9xh, train_loss_step=0.846]Epoch 0:  43%|████▎     | 63/147 [00:52<01:09,  1.21it/s, v_num=p9xh, train_loss_step=0.461]Epoch 0:  44%|████▎     | 64/147 [00:52<01:08,  1.21it/s, v_num=p9xh, train_loss_step=0.461]Epoch 0:  44%|████▎     | 64/147 [00:52<01:08,  1.21it/s, v_num=p9xh, train_loss_step=0.578]Epoch 0:  44%|████▍     | 65/147 [00:53<01:06,  1.23it/s, v_num=p9xh, train_loss_step=0.578]Epoch 0:  44%|████▍     | 65/147 [00:53<01:06,  1.23it/s, v_num=p9xh, train_loss_step=0.668]Epoch 0:  45%|████▍     | 66/147 [00:53<01:05,  1.24it/s, v_num=p9xh, train_loss_step=0.668]Epoch 0:  45%|████▍     | 66/147 [00:53<01:05,  1.24it/s, v_num=p9xh, train_loss_step=0.525]Epoch 0:  46%|████▌     | 67/147 [00:53<01:04,  1.25it/s, v_num=p9xh, train_loss_step=0.525]Epoch 0:  46%|████▌     | 67/147 [00:53<01:04,  1.25it/s, v_num=p9xh, train_loss_step=0.557]Epoch 0:  46%|████▋     | 68/147 [00:56<01:05,  1.20it/s, v_num=p9xh, train_loss_step=0.557]Epoch 0:  46%|████▋     | 68/147 [00:56<01:05,  1.20it/s, v_num=p9xh, train_loss_step=0.596]Epoch 0:  47%|████▋     | 69/147 [00:57<01:04,  1.21it/s, v_num=p9xh, train_loss_step=0.596]Epoch 0:  47%|████▋     | 69/147 [00:57<01:04,  1.21it/s, v_num=p9xh, train_loss_step=0.577]Epoch 0:  48%|████▊     | 70/147 [00:57<01:03,  1.21it/s, v_num=p9xh, train_loss_step=0.577]Epoch 0:  48%|████▊     | 70/147 [00:57<01:03,  1.21it/s, v_num=p9xh, train_loss_step=0.691]Epoch 0:  48%|████▊     | 71/147 [00:58<01:02,  1.22it/s, v_num=p9xh, train_loss_step=0.691]Epoch 0:  48%|████▊     | 71/147 [00:58<01:02,  1.22it/s, v_num=p9xh, train_loss_step=0.672]Epoch 0:  49%|████▉     | 72/147 [00:58<01:00,  1.23it/s, v_num=p9xh, train_loss_step=0.672]Epoch 0:  49%|████▉     | 72/147 [00:58<01:00,  1.23it/s, v_num=p9xh, train_loss_step=0.521]Epoch 0:  50%|████▉     | 73/147 [00:58<00:59,  1.24it/s, v_num=p9xh, train_loss_step=0.521]Epoch 0:  50%|████▉     | 73/147 [00:58<00:59,  1.24it/s, v_num=p9xh, train_loss_step=0.627]Epoch 0:  50%|█████     | 74/147 [01:01<01:00,  1.21it/s, v_num=p9xh, train_loss_step=0.627]Epoch 0:  50%|█████     | 74/147 [01:01<01:00,  1.21it/s, v_num=p9xh, train_loss_step=0.548]Epoch 0:  51%|█████     | 75/147 [01:01<00:59,  1.22it/s, v_num=p9xh, train_loss_step=0.548]Epoch 0:  51%|█████     | 75/147 [01:01<00:59,  1.22it/s, v_num=p9xh, train_loss_step=0.333]Epoch 0:  52%|█████▏    | 76/147 [01:01<00:57,  1.23it/s, v_num=p9xh, train_loss_step=0.333]Epoch 0:  52%|█████▏    | 76/147 [01:01<00:57,  1.23it/s, v_num=p9xh, train_loss_step=0.445]Epoch 0:  52%|█████▏    | 77/147 [01:02<00:56,  1.24it/s, v_num=p9xh, train_loss_step=0.445]Epoch 0:  52%|█████▏    | 77/147 [01:02<00:56,  1.24it/s, v_num=p9xh, train_loss_step=0.558]Epoch 0:  53%|█████▎    | 78/147 [01:02<00:55,  1.25it/s, v_num=p9xh, train_loss_step=0.558]Epoch 0:  53%|█████▎    | 78/147 [01:02<00:55,  1.25it/s, v_num=p9xh, train_loss_step=0.380]Epoch 0:  54%|█████▎    | 79/147 [01:02<00:54,  1.26it/s, v_num=p9xh, train_loss_step=0.380]Epoch 0:  54%|█████▎    | 79/147 [01:02<00:54,  1.26it/s, v_num=p9xh, train_loss_step=0.587]Epoch 0:  54%|█████▍    | 80/147 [01:04<00:54,  1.23it/s, v_num=p9xh, train_loss_step=0.587]Epoch 0:  54%|█████▍    | 80/147 [01:04<00:54,  1.23it/s, v_num=p9xh, train_loss_step=0.437]Epoch 0:  55%|█████▌    | 81/147 [01:05<00:53,  1.24it/s, v_num=p9xh, train_loss_step=0.437]Epoch 0:  55%|█████▌    | 81/147 [01:05<00:53,  1.24it/s, v_num=p9xh, train_loss_step=0.531]Epoch 0:  56%|█████▌    | 82/147 [01:05<00:52,  1.25it/s, v_num=p9xh, train_loss_step=0.531]Epoch 0:  56%|█████▌    | 82/147 [01:05<00:52,  1.25it/s, v_num=p9xh, train_loss_step=0.561]Epoch 0:  56%|█████▋    | 83/147 [01:06<00:50,  1.26it/s, v_num=p9xh, train_loss_step=0.561]Epoch 0:  56%|█████▋    | 83/147 [01:06<00:50,  1.26it/s, v_num=p9xh, train_loss_step=0.624]Epoch 0:  57%|█████▋    | 84/147 [01:06<00:50,  1.26it/s, v_num=p9xh, train_loss_step=0.624]Epoch 0:  57%|█████▋    | 84/147 [01:06<00:50,  1.26it/s, v_num=p9xh, train_loss_step=0.562]Epoch 0:  58%|█████▊    | 85/147 [01:06<00:48,  1.27it/s, v_num=p9xh, train_loss_step=0.562]Epoch 0:  58%|█████▊    | 85/147 [01:06<00:48,  1.27it/s, v_num=p9xh, train_loss_step=0.443]Epoch 0:  59%|█████▊    | 86/147 [01:08<00:48,  1.25it/s, v_num=p9xh, train_loss_step=0.443]Epoch 0:  59%|█████▊    | 86/147 [01:08<00:48,  1.25it/s, v_num=p9xh, train_loss_step=0.518]Epoch 0:  59%|█████▉    | 87/147 [01:09<00:47,  1.26it/s, v_num=p9xh, train_loss_step=0.518]Epoch 0:  59%|█████▉    | 87/147 [01:09<00:47,  1.26it/s, v_num=p9xh, train_loss_step=0.478]Epoch 0:  60%|█████▉    | 88/147 [01:09<00:46,  1.26it/s, v_num=p9xh, train_loss_step=0.478]Epoch 0:  60%|█████▉    | 88/147 [01:09<00:46,  1.26it/s, v_num=p9xh, train_loss_step=0.525]Epoch 0:  61%|██████    | 89/147 [01:10<00:45,  1.27it/s, v_num=p9xh, train_loss_step=0.525]Epoch 0:  61%|██████    | 89/147 [01:10<00:45,  1.27it/s, v_num=p9xh, train_loss_step=0.571]Epoch 0:  61%|██████    | 90/147 [01:10<00:44,  1.27it/s, v_num=p9xh, train_loss_step=0.571]Epoch 0:  61%|██████    | 90/147 [01:10<00:44,  1.27it/s, v_num=p9xh, train_loss_step=0.362]Epoch 0:  62%|██████▏   | 91/147 [01:11<00:43,  1.28it/s, v_num=p9xh, train_loss_step=0.362]Epoch 0:  62%|██████▏   | 91/147 [01:11<00:43,  1.28it/s, v_num=p9xh, train_loss_step=0.448]Epoch 0:  63%|██████▎   | 92/147 [01:12<00:43,  1.26it/s, v_num=p9xh, train_loss_step=0.448]Epoch 0:  63%|██████▎   | 92/147 [01:12<00:43,  1.26it/s, v_num=p9xh, train_loss_step=0.342]Epoch 0:  63%|██████▎   | 93/147 [01:13<00:42,  1.27it/s, v_num=p9xh, train_loss_step=0.342]Epoch 0:  63%|██████▎   | 93/147 [01:13<00:42,  1.27it/s, v_num=p9xh, train_loss_step=0.425]Epoch 0:  64%|██████▍   | 94/147 [01:13<00:41,  1.28it/s, v_num=p9xh, train_loss_step=0.425]Epoch 0:  64%|██████▍   | 94/147 [01:13<00:41,  1.28it/s, v_num=p9xh, train_loss_step=0.447]Epoch 0:  65%|██████▍   | 95/147 [01:13<00:40,  1.29it/s, v_num=p9xh, train_loss_step=0.447]Epoch 0:  65%|██████▍   | 95/147 [01:13<00:40,  1.29it/s, v_num=p9xh, train_loss_step=0.375]Epoch 0:  65%|██████▌   | 96/147 [01:14<00:39,  1.29it/s, v_num=p9xh, train_loss_step=0.375]Epoch 0:  65%|██████▌   | 96/147 [01:14<00:39,  1.29it/s, v_num=p9xh, train_loss_step=0.665]Epoch 0:  66%|██████▌   | 97/147 [01:15<00:38,  1.29it/s, v_num=p9xh, train_loss_step=0.665]Epoch 0:  66%|██████▌   | 97/147 [01:15<00:38,  1.29it/s, v_num=p9xh, train_loss_step=0.493]Epoch 0:  67%|██████▋   | 98/147 [01:16<00:38,  1.29it/s, v_num=p9xh, train_loss_step=0.493]Epoch 0:  67%|██████▋   | 98/147 [01:16<00:38,  1.29it/s, v_num=p9xh, train_loss_step=0.659]Epoch 0:  67%|██████▋   | 99/147 [01:16<00:37,  1.29it/s, v_num=p9xh, train_loss_step=0.659]Epoch 0:  67%|██████▋   | 99/147 [01:16<00:37,  1.29it/s, v_num=p9xh, train_loss_step=0.396]Epoch 0:  68%|██████▊   | 100/147 [01:17<00:36,  1.30it/s, v_num=p9xh, train_loss_step=0.396]Epoch 0:  68%|██████▊   | 100/147 [01:17<00:36,  1.30it/s, v_num=p9xh, train_loss_step=0.572]Epoch 0:  69%|██████▊   | 101/147 [01:17<00:35,  1.30it/s, v_num=p9xh, train_loss_step=0.572]Epoch 0:  69%|██████▊   | 101/147 [01:17<00:35,  1.30it/s, v_num=p9xh, train_loss_step=0.428]Epoch 0:  69%|██████▉   | 102/147 [01:18<00:34,  1.30it/s, v_num=p9xh, train_loss_step=0.428]Epoch 0:  69%|██████▉   | 102/147 [01:18<00:34,  1.30it/s, v_num=p9xh, train_loss_step=0.633]Epoch 0:  70%|███████   | 103/147 [01:18<00:33,  1.31it/s, v_num=p9xh, train_loss_step=0.633]Epoch 0:  70%|███████   | 103/147 [01:18<00:33,  1.31it/s, v_num=p9xh, train_loss_step=0.558]Epoch 0:  71%|███████   | 104/147 [01:20<00:33,  1.29it/s, v_num=p9xh, train_loss_step=0.558]Epoch 0:  71%|███████   | 104/147 [01:20<00:33,  1.29it/s, v_num=p9xh, train_loss_step=0.425]Epoch 0:  71%|███████▏  | 105/147 [01:20<00:32,  1.30it/s, v_num=p9xh, train_loss_step=0.425]Epoch 0:  71%|███████▏  | 105/147 [01:20<00:32,  1.30it/s, v_num=p9xh, train_loss_step=0.562]Epoch 0:  72%|███████▏  | 106/147 [01:21<00:31,  1.31it/s, v_num=p9xh, train_loss_step=0.562]Epoch 0:  72%|███████▏  | 106/147 [01:21<00:31,  1.31it/s, v_num=p9xh, train_loss_step=0.453]Epoch 0:  73%|███████▎  | 107/147 [01:21<00:30,  1.31it/s, v_num=p9xh, train_loss_step=0.453]Epoch 0:  73%|███████▎  | 107/147 [01:21<00:30,  1.31it/s, v_num=p9xh, train_loss_step=0.569]Epoch 0:  73%|███████▎  | 108/147 [01:22<00:29,  1.31it/s, v_num=p9xh, train_loss_step=0.569]Epoch 0:  73%|███████▎  | 108/147 [01:22<00:29,  1.31it/s, v_num=p9xh, train_loss_step=0.574]Epoch 0:  74%|███████▍  | 109/147 [01:22<00:28,  1.32it/s, v_num=p9xh, train_loss_step=0.574]Epoch 0:  74%|███████▍  | 109/147 [01:22<00:28,  1.32it/s, v_num=p9xh, train_loss_step=0.501]Epoch 0:  75%|███████▍  | 110/147 [01:24<00:28,  1.31it/s, v_num=p9xh, train_loss_step=0.501]Epoch 0:  75%|███████▍  | 110/147 [01:24<00:28,  1.31it/s, v_num=p9xh, train_loss_step=0.550]Epoch 0:  76%|███████▌  | 111/147 [01:24<00:27,  1.31it/s, v_num=p9xh, train_loss_step=0.550]Epoch 0:  76%|███████▌  | 111/147 [01:24<00:27,  1.31it/s, v_num=p9xh, train_loss_step=0.388]Epoch 0:  76%|███████▌  | 112/147 [01:25<00:26,  1.31it/s, v_num=p9xh, train_loss_step=0.388]Epoch 0:  76%|███████▌  | 112/147 [01:25<00:26,  1.31it/s, v_num=p9xh, train_loss_step=0.704]Epoch 0:  77%|███████▋  | 113/147 [01:25<00:25,  1.32it/s, v_num=p9xh, train_loss_step=0.704]Epoch 0:  77%|███████▋  | 113/147 [01:25<00:25,  1.32it/s, v_num=p9xh, train_loss_step=0.472]Epoch 0:  78%|███████▊  | 114/147 [01:26<00:25,  1.32it/s, v_num=p9xh, train_loss_step=0.472]Epoch 0:  78%|███████▊  | 114/147 [01:26<00:25,  1.32it/s, v_num=p9xh, train_loss_step=0.401]Epoch 0:  78%|███████▊  | 115/147 [01:26<00:24,  1.32it/s, v_num=p9xh, train_loss_step=0.401]Epoch 0:  78%|███████▊  | 115/147 [01:26<00:24,  1.32it/s, v_num=p9xh, train_loss_step=0.431]Epoch 0:  79%|███████▉  | 116/147 [01:29<00:23,  1.30it/s, v_num=p9xh, train_loss_step=0.431]Epoch 0:  79%|███████▉  | 116/147 [01:29<00:23,  1.30it/s, v_num=p9xh, train_loss_step=0.421]Epoch 0:  80%|███████▉  | 117/147 [01:29<00:22,  1.31it/s, v_num=p9xh, train_loss_step=0.421]Epoch 0:  80%|███████▉  | 117/147 [01:29<00:22,  1.31it/s, v_num=p9xh, train_loss_step=0.618]Epoch 0:  80%|████████  | 118/147 [01:29<00:22,  1.31it/s, v_num=p9xh, train_loss_step=0.618]Epoch 0:  80%|████████  | 118/147 [01:29<00:22,  1.31it/s, v_num=p9xh, train_loss_step=0.660]Epoch 0:  81%|████████  | 119/147 [01:30<00:21,  1.32it/s, v_num=p9xh, train_loss_step=0.660]Epoch 0:  81%|████████  | 119/147 [01:30<00:21,  1.32it/s, v_num=p9xh, train_loss_step=0.387]Epoch 0:  82%|████████▏ | 120/147 [01:31<00:20,  1.32it/s, v_num=p9xh, train_loss_step=0.387]Epoch 0:  82%|████████▏ | 120/147 [01:31<00:20,  1.32it/s, v_num=p9xh, train_loss_step=0.483]Epoch 0:  82%|████████▏ | 121/147 [01:31<00:19,  1.32it/s, v_num=p9xh, train_loss_step=0.483]Epoch 0:  82%|████████▏ | 121/147 [01:31<00:19,  1.32it/s, v_num=p9xh, train_loss_step=0.392]Epoch 0:  83%|████████▎ | 122/147 [01:33<00:19,  1.31it/s, v_num=p9xh, train_loss_step=0.392]Epoch 0:  83%|████████▎ | 122/147 [01:33<00:19,  1.31it/s, v_num=p9xh, train_loss_step=0.444]Epoch 0:  84%|████████▎ | 123/147 [01:33<00:18,  1.31it/s, v_num=p9xh, train_loss_step=0.444]Epoch 0:  84%|████████▎ | 123/147 [01:33<00:18,  1.31it/s, v_num=p9xh, train_loss_step=0.361]Epoch 0:  84%|████████▍ | 124/147 [01:33<00:17,  1.32it/s, v_num=p9xh, train_loss_step=0.361]Epoch 0:  84%|████████▍ | 124/147 [01:33<00:17,  1.32it/s, v_num=p9xh, train_loss_step=0.600]Epoch 0:  85%|████████▌ | 125/147 [01:34<00:16,  1.33it/s, v_num=p9xh, train_loss_step=0.600]Epoch 0:  85%|████████▌ | 125/147 [01:34<00:16,  1.33it/s, v_num=p9xh, train_loss_step=0.666]Epoch 0:  86%|████████▌ | 126/147 [01:35<00:15,  1.32it/s, v_num=p9xh, train_loss_step=0.666]Epoch 0:  86%|████████▌ | 126/147 [01:35<00:15,  1.32it/s, v_num=p9xh, train_loss_step=0.453]Epoch 0:  86%|████████▋ | 127/147 [01:35<00:15,  1.33it/s, v_num=p9xh, train_loss_step=0.453]Epoch 0:  86%|████████▋ | 127/147 [01:35<00:15,  1.33it/s, v_num=p9xh, train_loss_step=0.392]Epoch 0:  87%|████████▋ | 128/147 [01:37<00:14,  1.31it/s, v_num=p9xh, train_loss_step=0.392]Epoch 0:  87%|████████▋ | 128/147 [01:37<00:14,  1.31it/s, v_num=p9xh, train_loss_step=0.574]Epoch 0:  88%|████████▊ | 129/147 [01:37<00:13,  1.32it/s, v_num=p9xh, train_loss_step=0.574]Epoch 0:  88%|████████▊ | 129/147 [01:37<00:13,  1.32it/s, v_num=p9xh, train_loss_step=0.479]Epoch 0:  88%|████████▊ | 130/147 [01:38<00:12,  1.32it/s, v_num=p9xh, train_loss_step=0.479]Epoch 0:  88%|████████▊ | 130/147 [01:38<00:12,  1.32it/s, v_num=p9xh, train_loss_step=0.518]Epoch 0:  89%|████████▉ | 131/147 [01:38<00:12,  1.33it/s, v_num=p9xh, train_loss_step=0.518]Epoch 0:  89%|████████▉ | 131/147 [01:38<00:12,  1.33it/s, v_num=p9xh, train_loss_step=0.371]Epoch 0:  90%|████████▉ | 132/147 [01:39<00:11,  1.32it/s, v_num=p9xh, train_loss_step=0.371]Epoch 0:  90%|████████▉ | 132/147 [01:39<00:11,  1.32it/s, v_num=p9xh, train_loss_step=0.505]Epoch 0:  90%|█████████ | 133/147 [01:40<00:10,  1.33it/s, v_num=p9xh, train_loss_step=0.505]Epoch 0:  90%|█████████ | 133/147 [01:40<00:10,  1.33it/s, v_num=p9xh, train_loss_step=0.508]Epoch 0:  91%|█████████ | 134/147 [01:41<00:09,  1.32it/s, v_num=p9xh, train_loss_step=0.508]Epoch 0:  91%|█████████ | 134/147 [01:41<00:09,  1.32it/s, v_num=p9xh, train_loss_step=0.484]Epoch 0:  92%|█████████▏| 135/147 [01:41<00:09,  1.33it/s, v_num=p9xh, train_loss_step=0.484]Epoch 0:  92%|█████████▏| 135/147 [01:41<00:09,  1.33it/s, v_num=p9xh, train_loss_step=0.522]Epoch 0:  93%|█████████▎| 136/147 [01:42<00:08,  1.33it/s, v_num=p9xh, train_loss_step=0.522]Epoch 0:  93%|█████████▎| 136/147 [01:42<00:08,  1.33it/s, v_num=p9xh, train_loss_step=0.352]Epoch 0:  93%|█████████▎| 137/147 [01:42<00:07,  1.34it/s, v_num=p9xh, train_loss_step=0.352]Epoch 0:  93%|█████████▎| 137/147 [01:42<00:07,  1.34it/s, v_num=p9xh, train_loss_step=0.504]Epoch 0:  94%|█████████▍| 138/147 [01:43<00:06,  1.33it/s, v_num=p9xh, train_loss_step=0.504]Epoch 0:  94%|█████████▍| 138/147 [01:43<00:06,  1.33it/s, v_num=p9xh, train_loss_step=0.277]Epoch 0:  95%|█████████▍| 139/147 [01:44<00:06,  1.33it/s, v_num=p9xh, train_loss_step=0.277]Epoch 0:  95%|█████████▍| 139/147 [01:44<00:06,  1.33it/s, v_num=p9xh, train_loss_step=0.567]Epoch 0:  95%|█████████▌| 140/147 [01:45<00:05,  1.33it/s, v_num=p9xh, train_loss_step=0.567]Epoch 0:  95%|█████████▌| 140/147 [01:45<00:05,  1.33it/s, v_num=p9xh, train_loss_step=0.467]Epoch 0:  96%|█████████▌| 141/147 [01:45<00:04,  1.34it/s, v_num=p9xh, train_loss_step=0.467]Epoch 0:  96%|█████████▌| 141/147 [01:45<00:04,  1.34it/s, v_num=p9xh, train_loss_step=0.421]Epoch 0:  97%|█████████▋| 142/147 [01:46<00:03,  1.34it/s, v_num=p9xh, train_loss_step=0.421]Epoch 0:  97%|█████████▋| 142/147 [01:46<00:03,  1.34it/s, v_num=p9xh, train_loss_step=0.401]Epoch 0:  97%|█████████▋| 143/147 [01:46<00:02,  1.34it/s, v_num=p9xh, train_loss_step=0.401]Epoch 0:  97%|█████████▋| 143/147 [01:46<00:02,  1.34it/s, v_num=p9xh, train_loss_step=0.360]Epoch 0:  98%|█████████▊| 144/147 [01:47<00:02,  1.34it/s, v_num=p9xh, train_loss_step=0.360]Epoch 0:  98%|█████████▊| 144/147 [01:47<00:02,  1.34it/s, v_num=p9xh, train_loss_step=0.457]Epoch 0:  99%|█████████▊| 145/147 [01:47<00:01,  1.35it/s, v_num=p9xh, train_loss_step=0.457]Epoch 0:  99%|█████████▊| 145/147 [01:47<00:01,  1.35it/s, v_num=p9xh, train_loss_step=0.456]Epoch 0:  99%|█████████▉| 146/147 [01:48<00:00,  1.34it/s, v_num=p9xh, train_loss_step=0.456]Epoch 0:  99%|█████████▉| 146/147 [01:48<00:00,  1.34it/s, v_num=p9xh, train_loss_step=0.389]Epoch 0: 100%|██████████| 147/147 [01:49<00:00,  1.35it/s, v_num=p9xh, train_loss_step=0.389]Epoch 0: 100%|██████████| 147/147 [01:49<00:00,  1.35it/s, v_num=p9xh, train_loss_step=0.410]
+Validation: 0it [00:00, ?it/s][A
+Validation:   0%|          | 0/17 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/17 [00:00<?, ?it/s][A
+Validation DataLoader 0:   6%|▌         | 1/17 [00:00<00:03,  4.53it/s][A
+Validation DataLoader 0:  12%|█▏        | 2/17 [00:00<00:04,  3.65it/s][A
+Validation DataLoader 0:  18%|█▊        | 3/17 [00:00<00:04,  3.41it/s][A
+Validation DataLoader 0:  24%|██▎       | 4/17 [00:01<00:03,  3.31it/s][A
+Validation DataLoader 0:  29%|██▉       | 5/17 [00:01<00:03,  3.24it/s][A
+Validation DataLoader 0:  35%|███▌      | 6/17 [00:01<00:03,  3.20it/s][A
+Validation DataLoader 0:  41%|████      | 7/17 [00:02<00:03,  2.55it/s][A
+Validation DataLoader 0:  47%|████▋     | 8/17 [00:03<00:03,  2.60it/s][A
+Validation DataLoader 0:  53%|█████▎    | 9/17 [00:03<00:03,  2.64it/s][A
+Validation DataLoader 0:  59%|█████▉    | 10/17 [00:03<00:02,  2.67it/s][A
+Validation DataLoader 0:  65%|██████▍   | 11/17 [00:04<00:02,  2.70it/s][A
+Validation DataLoader 0:  71%|███████   | 12/17 [00:04<00:01,  2.72it/s][A
+Validation DataLoader 0:  76%|███████▋  | 13/17 [00:04<00:01,  2.74it/s][A
+Validation DataLoader 0:  82%|████████▏ | 14/17 [00:05<00:01,  2.76it/s][A
+Validation DataLoader 0:  88%|████████▊ | 15/17 [00:05<00:00,  2.78it/s][A
+Validation DataLoader 0:  94%|█████████▍| 16/17 [00:05<00:00,  2.79it/s][A
+Validation DataLoader 0: 100%|██████████| 17/17 [00:05<00:00,  2.88it/s][AEpoch 0: 100%|██████████| 147/147 [01:58<00:00,  1.24it/s, v_num=p9xh, train_loss_step=0.410, val_loss=0.433, val_MultilabelF1Score=0.661]
+Error executing job with overrides: ['data=supervised_data', 'trainer.devices=1', 'group=wind_supervised']
+Traceback (most recent call last):
+  File "main.py", line 34, in <module>
+    main()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "main.py", line 24, in main
+    trainer.fit(network, data_module)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 529, in fit
+    call._call_and_handle_interrupt(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/call.py", line 41, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 91, in launch
+    return function(*args, **kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 568, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 973, in _run
+    results = self._run_stage()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 1016, in _run_stage
+    self.fit_loop.run()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/loops/fit_loop.py", line 202, in run
+    self.on_advance_end()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/loops/fit_loop.py", line 369, in on_advance_end
+    call._call_callback_hooks(trainer, "on_train_epoch_end", monitoring_callbacks=True)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/call.py", line 193, in _call_callback_hooks
+    fn(trainer, trainer.lightning_module, *args, **kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 303, in on_train_epoch_end
+    self._save_topk_checkpoint(trainer, monitor_candidates)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 360, in _save_topk_checkpoint
+    self._save_monitor_checkpoint(trainer, monitor_candidates)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 661, in _save_monitor_checkpoint
+    self._update_best_and_save(current, trainer, monitor_candidates)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 712, in _update_best_and_save
+    self._save_checkpoint(trainer, filepath)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 365, in _save_checkpoint
+    trainer.save_checkpoint(filepath, self.save_weights_only)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 1302, in save_checkpoint
+    self._checkpoint_connector.save_checkpoint(filepath, weights_only=weights_only, storage_options=storage_options)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/checkpoint_connector.py", line 501, in save_checkpoint
+    self.trainer.strategy.save_checkpoint(_checkpoint, filepath, storage_options=storage_options)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/strategies/strategy.py", line 446, in save_checkpoint
+    self.checkpoint_io.save_checkpoint(checkpoint, filepath, storage_options=storage_options)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/fabric/plugins/io/torch_io.py", line 54, in save_checkpoint
+    fs.makedirs(os.path.dirname(path), exist_ok=True)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/fsspec/implementations/local.py", line 52, in makedirs
+    os.makedirs(path, exist_ok=exist_ok)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/os.py", line 223, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/scratch/weights'
+wandb: Waiting for W&B process to finish... (failed 1).
+wandb: 
+wandb: Run history:
+wandb:                 epoch ▁▁▁
+wandb:       train_loss_step ▁█
+wandb:   trainer/global_step ▁▅█
+wandb: val_MultilabelF1Score ▁
+wandb:              val_loss ▁
+wandb: 
+wandb: Run summary:
+wandb:                 epoch 0
+wandb:       train_loss_step 0.57191
+wandb:   trainer/global_step 146
+wandb: val_MultilabelF1Score 0.66125
+wandb:              val_loss 0.43333
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /home/hice1/kalyono3/xview2_strong_baseline/outputs/2025-12-02/05-34-53/wandb/offline-run-20251202_053455-9qd1p9xh
+wandb: Find logs at: ./wandb/offline-run-20251202_053455-9qd1p9xh/logs
+Traceback (most recent call last):
+  File "main.py", line 34, in <module>
+    main()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "main.py", line 24, in main
+    trainer.fit(network, data_module)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 529, in fit
+    call._call_and_handle_interrupt(
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/call.py", line 41, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 91, in launch
+    return function(*args, **kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 568, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 973, in _run
+    results = self._run_stage()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 1016, in _run_stage
+    self.fit_loop.run()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/loops/fit_loop.py", line 202, in run
+    self.on_advance_end()
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/loops/fit_loop.py", line 369, in on_advance_end
+    call._call_callback_hooks(trainer, "on_train_epoch_end", monitoring_callbacks=True)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/call.py", line 193, in _call_callback_hooks
+    fn(trainer, trainer.lightning_module, *args, **kwargs)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 303, in on_train_epoch_end
+    self._save_topk_checkpoint(trainer, monitor_candidates)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 360, in _save_topk_checkpoint
+    self._save_monitor_checkpoint(trainer, monitor_candidates)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 661, in _save_monitor_checkpoint
+    self._update_best_and_save(current, trainer, monitor_candidates)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 712, in _update_best_and_save
+    self._save_checkpoint(trainer, filepath)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/callbacks/model_checkpoint.py", line 365, in _save_checkpoint
+    trainer.save_checkpoint(filepath, self.save_weights_only)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 1302, in save_checkpoint
+    self._checkpoint_connector.save_checkpoint(filepath, weights_only=weights_only, storage_options=storage_options)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/checkpoint_connector.py", line 501, in save_checkpoint
+    self.trainer.strategy.save_checkpoint(_checkpoint, filepath, storage_options=storage_options)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/pytorch/strategies/strategy.py", line 446, in save_checkpoint
+    self.checkpoint_io.save_checkpoint(checkpoint, filepath, storage_options=storage_options)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/lightning/fabric/plugins/io/torch_io.py", line 54, in save_checkpoint
+    fs.makedirs(os.path.dirname(path), exist_ok=True)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/site-packages/fsspec/implementations/local.py", line 52, in makedirs
+    os.makedirs(path, exist_ok=exist_ok)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/hice1/kalyono3/scratch/conda_venvs/xview2_strong_baseline/lib/python3.8/os.py", line 223, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/scratch/weights'
+                                                                        [AEpoch 0: 100%|██████████| 147/147 [01:58<00:00,  1.24it/s, v_num=p9xh, train_loss_step=0.410, val_loss=0.433, val_MultilabelF1Score=0.661, train_loss_epoch=0.604, train_MultilabelF1Score_epoch=0.471]srun: error: atl1-1-02-009-33-0: task 0: Exited with exit code 1
+---------------------------------------
+Begin Slurm Epilog: Dec-02-2025 05:37:47
+Job ID:        3740317
+User ID:       kalyono3
+Account:       coc
+Job name:      xv2_wind_train
+Resources:     cpu=4,gres/gpu:v100=1,mem=16G,node=1
+Rsrc Used:     cput=00:12:40,vmem=0,walltime=00:03:10,mem=47892K,energy_used=0
+Partition:     coc-gpu
+QOS:           coc-ice
+Nodes:         atl1-1-02-009-33-0
+---------------------------------------

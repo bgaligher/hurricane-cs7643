@@ -1,0 +1,47 @@
+---------------------------------------
+Begin Slurm Prolog: Dec-02-2025 04:39:14
+Job ID:    3737203
+User ID:   kalyono3
+Account:   coc
+Job name:  xv2_wind_train
+Partition: coc-gpu
+QOS:       coc-ice
+---------------------------------------
+Starting job 3737203 on atl1-1-02-009-32-0
+Tue Dec  2 04:39:15 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:AF:00.0 Off |                    0 |
+| N/A   41C    P0             26W /  250W |       0MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Traceback (most recent call last):
+  File "main.py", line 3, in <module>
+    import hydra
+ModuleNotFoundError: No module named 'hydra'
+srun: error: atl1-1-02-009-32-0: task 0: Exited with exit code 1
+---------------------------------------
+Begin Slurm Epilog: Dec-02-2025 04:39:26
+Job ID:        3737203
+User ID:       kalyono3
+Account:       coc
+Job name:      xv2_wind_train
+Resources:     cpu=4,gres/gpu:v100=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:48,vmem=0,walltime=00:00:12,mem=48092K,energy_used=0
+Partition:     coc-gpu
+QOS:           coc-ice
+Nodes:         atl1-1-02-009-32-0
+---------------------------------------
