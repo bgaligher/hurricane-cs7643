@@ -1,91 +1,0 @@
----------------------------------------
-Begin Slurm Prolog: Dec-03-2025 23:06:13
-Job ID:    3850546
-User ID:   bgaligher3
-Account:   coc
-Job name:  hurricane-lora
-Partition: ice-gpu
-QOS:       coc-ice
----------------------------------------
-Activating virtual environment...
-Virtual environment activated!
-Loading modules...
-
-CondaError: Run 'conda init' before 'conda deactivate'
-
-Modules loaded!
-Starting training script...
-Using CUDA
-  0%|          | 0/1300 [00:00<?, ?it/s]  0%|          | 1/1300 [00:00<07:22,  2.93it/s]  1%|          | 9/1300 [00:00<00:50, 25.65it/s]  1%|▏         | 17/1300 [00:00<00:32, 40.05it/s]  2%|▏         | 25/1300 [00:00<00:24, 51.02it/s]  3%|▎         | 33/1300 [00:00<00:22, 57.30it/s]  3%|▎         | 40/1300 [00:00<00:22, 55.10it/s]  4%|▎         | 47/1300 [00:01<00:23, 54.47it/s]  4%|▍         | 55/1300 [00:01<00:20, 60.35it/s]  5%|▍         | 62/1300 [00:01<00:19, 62.92it/s]  5%|▌         | 69/1300 [00:01<00:19, 64.57it/s]  6%|▌         | 76/1300 [00:01<00:18, 65.02it/s]  6%|▋         | 84/1300 [00:01<00:18, 67.26it/s]  7%|▋         | 92/1300 [00:01<00:18, 65.46it/s]  8%|▊         | 99/1300 [00:01<00:18, 65.17it/s]  8%|▊         | 107/1300 [00:01<00:17, 68.95it/s]  9%|▉         | 116/1300 [00:02<00:16, 73.00it/s] 10%|▉         | 124/1300 [00:02<00:15, 74.27it/s] 10%|█         | 132/1300 [00:02<00:15, 74.67it/s] 11%|█         | 140/1300 [00:02<00:15, 75.72it/s] 11%|█▏        | 148/1300 [00:02<00:23, 50.08it/s] 12%|█▏        | 155/1300 [00:02<00:21, 52.12it/s] 13%|█▎        | 163/1300 [00:02<00:20, 54.78it/s] 13%|█▎        | 174/1300 [00:02<00:17, 65.20it/s] 14%|█▍        | 182/1300 [00:03<00:16, 66.86it/s] 15%|█▍        | 193/1300 [00:03<00:14, 77.51it/s] 16%|█▌        | 202/1300 [00:03<00:14, 75.30it/s] 16%|█▌        | 210/1300 [00:03<00:14, 72.70it/s] 17%|█▋        | 221/1300 [00:03<00:13, 81.49it/s] 18%|█▊        | 230/1300 [00:03<00:13, 79.17it/s] 19%|█▊        | 243/1300 [00:03<00:11, 90.02it/s] 19%|█▉        | 253/1300 [00:03<00:12, 80.87it/s] 20%|██        | 264/1300 [00:04<00:12, 83.72it/s] 21%|██        | 274/1300 [00:04<00:11, 86.51it/s] 22%|██▏       | 283/1300 [00:04<00:11, 85.30it/s] 22%|██▏       | 292/1300 [00:04<00:11, 86.40it/s] 23%|██▎       | 301/1300 [00:04<00:11, 87.02it/s] 24%|██▍       | 310/1300 [00:04<00:11, 85.73it/s] 25%|██▍       | 323/1300 [00:04<00:10, 97.14it/s] 26%|██▌       | 334/1300 [00:04<00:09, 100.49it/s] 27%|██▋       | 346/1300 [00:04<00:09, 100.27it/s] 27%|██▋       | 357/1300 [00:05<00:11, 83.63it/s]  29%|██▊       | 371/1300 [00:05<00:09, 97.09it/s] 30%|███       | 391/1300 [00:05<00:07, 123.15it/s] 31%|███▏      | 407/1300 [00:05<00:06, 131.17it/s] 32%|███▏      | 421/1300 [00:05<00:07, 114.61it/s] 33%|███▎      | 434/1300 [00:05<00:07, 112.55it/s] 35%|███▌      | 455/1300 [00:05<00:06, 137.31it/s] 36%|███▌      | 471/1300 [00:05<00:05, 141.96it/s] 38%|███▊      | 488/1300 [00:05<00:05, 148.26it/s] 39%|███▉      | 504/1300 [00:06<00:05, 133.38it/s] 40%|███▉      | 518/1300 [00:06<00:06, 113.16it/s] 41%|████      | 531/1300 [00:06<00:06, 114.97it/s] 42%|████▏     | 544/1300 [00:06<00:06, 108.36it/s] 43%|████▎     | 556/1300 [00:06<00:07, 105.62it/s] 44%|████▎     | 567/1300 [00:06<00:08, 86.88it/s]  45%|████▍     | 580/1300 [00:06<00:07, 95.02it/s] 45%|████▌     | 591/1300 [00:07<00:07, 96.04it/s] 47%|████▋     | 607/1300 [00:07<00:06, 112.02it/s] 48%|████▊     | 619/1300 [00:07<00:07, 93.33it/s]  48%|████▊     | 630/1300 [00:07<00:10, 64.44it/s] 50%|████▉     | 648/1300 [00:07<00:07, 84.96it/s] 51%|█████     | 666/1300 [00:07<00:06, 102.35it/s] 52%|█████▏    | 682/1300 [00:08<00:05, 112.33it/s] 54%|█████▎    | 698/1300 [00:08<00:04, 121.47it/s] 55%|█████▍    | 712/1300 [00:08<00:05, 111.99it/s] 56%|█████▌    | 725/1300 [00:08<00:05, 109.08it/s] 57%|█████▋    | 737/1300 [00:08<00:05, 101.13it/s] 58%|█████▊    | 748/1300 [00:08<00:05, 103.15it/s] 58%|█████▊    | 759/1300 [00:08<00:05, 99.18it/s]  59%|█████▉    | 772/1300 [00:08<00:05, 103.47it/s] 60%|██████    | 783/1300 [00:08<00:05, 101.14it/s] 61%|██████    | 794/1300 [00:09<00:05, 96.29it/s]  62%|██████▏   | 809/1300 [00:09<00:04, 108.77it/s] 63%|██████▎   | 823/1300 [00:09<00:04, 113.04it/s] 64%|██████▍   | 835/1300 [00:09<00:04, 104.04it/s] 65%|██████▌   | 846/1300 [00:09<00:04, 99.01it/s]  66%|██████▌   | 857/1300 [00:09<00:04, 98.73it/s] 67%|██████▋   | 875/1300 [00:09<00:03, 115.10it/s] 68%|██████▊   | 887/1300 [00:09<00:03, 111.94it/s] 69%|██████▉   | 903/1300 [00:10<00:03, 124.46it/s] 71%|███████   | 919/1300 [00:10<00:02, 131.12it/s] 72%|███████▏  | 933/1300 [00:10<00:03, 115.07it/s] 73%|███████▎  | 945/1300 [00:10<00:03, 99.13it/s]  74%|███████▎  | 957/1300 [00:10<00:03, 103.82it/s] 75%|███████▍  | 969/1300 [00:10<00:03, 107.10it/s] 76%|███████▌  | 983/1300 [00:10<00:02, 114.61it/s] 77%|███████▋  | 995/1300 [00:10<00:02, 107.40it/s] 78%|███████▊  | 1010/1300 [00:11<00:02, 118.50it/s] 79%|███████▊  | 1023/1300 [00:11<00:02, 120.12it/s] 80%|████████  | 1043/1300 [00:11<00:01, 141.37it/s] 81%|████████▏ | 1058/1300 [00:11<00:01, 138.40it/s] 83%|████████▎ | 1073/1300 [00:11<00:01, 128.53it/s] 84%|████████▍ | 1098/1300 [00:11<00:01, 156.65it/s] 86%|████████▌ | 1115/1300 [00:11<00:01, 154.60it/s] 87%|████████▋ | 1131/1300 [00:11<00:01, 141.28it/s] 88%|████████▊ | 1149/1300 [00:11<00:01, 149.62it/s] 90%|████████▉ | 1169/1300 [00:12<00:00, 160.02it/s] 91%|█████████▏| 1187/1300 [00:12<00:00, 143.06it/s] 92%|█████████▏| 1202/1300 [00:12<00:00, 139.96it/s] 94%|█████████▎| 1217/1300 [00:12<00:00, 88.77it/s]  95%|█████████▍| 1229/1300 [00:12<00:00, 94.13it/s] 95%|█████████▌| 1241/1300 [00:12<00:00, 94.99it/s] 97%|█████████▋| 1262/1300 [00:12<00:00, 117.53it/s] 98%|█████████▊| 1280/1300 [00:13<00:00, 130.90it/s]100%|█████████▉| 1295/1300 [00:13<00:00, 125.26it/s]100%|██████████| 1300/1300 [00:13<00:00, 97.93it/s] 
-steps_per_epoch 94 validation_steps 5
-  0%|          | 0/94 [00:00<?, ?it/s]  0%|          | 0/94 [00:30<?, ?it/s]
-Traceback (most recent call last):
-  File "/storage/ice1/4/5/bgaligher3/hurricane-cs7643/train_hurricane.py", line 609, in <module>
-    train_loss = train_epoch(epoch, seg_loss, ce_loss, model, optimizer, scheduler, train_data_loader, scaler, device)
-  File "/storage/ice1/4/5/bgaligher3/hurricane-cs7643/train_hurricane.py", line 420, in train_epoch
-    out = model(pre_imgs, post_imgs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 194, in forward
-    outputs = self.parallel_apply(replicas, inputs, module_kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 213, in parallel_apply
-    return parallel_apply(
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 129, in parallel_apply
-    output.reraise()
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/_utils.py", line 769, in reraise
-    raise exception
-torch.OutOfMemoryError: Caught OutOfMemoryError in replica 0 on device 0.
-Original Traceback (most recent call last):
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 99, in _worker
-    output = module(*input, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/hurricane-cs7643/models/hurricane.py", line 376, in forward
-    post_features = self.encoder(post_image)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/segment_anything/modeling/image_encoder.py", line 112, in forward
-    x = blk(x)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/segment_anything/modeling/image_encoder.py", line 174, in forward
-    x = self.attn(x)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/storage/ice1/4/5/bgaligher3/final_venv/lib64/python3.9/site-packages/segment_anything/modeling/image_encoder.py", line 231, in forward
-    attn = (q * self.scale) @ k.transpose(-2, -1)
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 6.00 GiB. GPU 0 has a total capacity of 139.80 GiB of which 5.42 GiB is free. Including non-PyTorch memory, this process has 134.37 GiB memory in use. Of the allocated memory 131.57 GiB is allocated by PyTorch, and 1.38 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-
-Training complete!
-Starting inference script...
-Traceback (most recent call last):
-  File "/storage/ice1/4/5/bgaligher3/hurricane-cs7643/inference_hurricane.py", line 147, in <module>
-    weights_path = os.path.join(checkpoint_dir,checkpoint_file)
-  File "/usr/lib64/python3.9/posixpath.py", line 90, in join
-    genericpath._check_arg_types('join', a, *p)
-  File "/usr/lib64/python3.9/genericpath.py", line 152, in _check_arg_types
-    raise TypeError(f'{funcname}() argument must be str, bytes, or '
-TypeError: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'
-Inference complete!
----------------------------------------
-Begin Slurm Epilog: Dec-03-2025 23:09:21
-Job ID:        3850546
-User ID:       bgaligher3
-Account:       coc
-Job name:      hurricane-lora
-Resources:     cpu=16,gres/gpu:h200=2,mem=128G,node=1
-Rsrc Used:     cput=00:50:24,vmem=0,walltime=00:03:09,mem=55465528K,energy_used=0
-Partition:     ice-gpu
-QOS:           coc-ice
-Nodes:         atl1-1-03-017-16-0
----------------------------------------
