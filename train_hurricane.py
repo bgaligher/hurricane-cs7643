@@ -327,7 +327,6 @@ def validate(net, data_loader, device, seg_loss):
 
     with torch.no_grad():
         for i, sample in enumerate(tqdm(data_loader)):
-            msks = sample["msk"].numpy()
             lbl_msk = sample["lbl_msk"].numpy()
             pre_img = sample["pre_img"].to(device, non_blocking=True)
             post_img = sample["post_img"].to(device, non_blocking=True)

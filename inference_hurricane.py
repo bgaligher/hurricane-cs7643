@@ -1,3 +1,11 @@
+"""
+
+References:
+    1. validate method taken from this repo: https://github.com/DIUx-xView/xView2_first_place
+    2. HoldoutData derived from dataloader classes in this repo: https://github.com/DIUx-xView/xView2_first_place
+    3. state_dict edits for DataParallel wrapper: https://discuss.pytorch.org/t/loading-a-model-state-dict-after-training-the-model-using-nn-dataparallel/118626/3
+"""
+
 import numpy as np
 import os
 import torch

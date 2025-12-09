@@ -1,9 +1,11 @@
 """
-Original file/class from: CS7653 - A4 codebase
+Original class from: CS7653 - Assignment 4 codebase
 
 Edits:
+    None.
 
-References:
+Additional References:
+    None.
 
 """
 

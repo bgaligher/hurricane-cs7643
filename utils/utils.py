@@ -4,8 +4,10 @@ File from this repo: https://github.com/DIUx-xView/xView2_first_place
 Edits:
     None.
 
-"""
+Additional References:
+    None.
 
+"""
 
 import numpy as np
 import cv2
