@@ -1,5 +1,10 @@
 # hurricane-cs7643
 
+## References
+
+Code from the following public repositories was used/modified for our project:
+   1. https://github.com/vdurnov/xview2_1st_place_solution
+
 ## Hurricane Model
 
 ### Python Environment & Dependencies
