@@ -76,6 +76,7 @@ Then replace the files in that repository with those found in the xview2_strong_
 6. config.yaml
 
 Create a Python virtual environment and install dependencies using the newly replaced requirements.txt file.
+Change all target filepath directory references to your wind dataset folders.
 
 ### Dataset preparation
 
