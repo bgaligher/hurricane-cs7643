@@ -13,6 +13,16 @@ In order to execute the training and evaluation code in this section, the correc
 
 It is recommended to create a Python virtual environment and install dependencies using requirements.txt file in the root directory of this repository.
 
+### Dataset preparation
+
+1. Download the xBD dataset following the instructions at link: https://xview2.org/
+
+2. Execute the following code in the terminal to isolate wind data from xBD:
+
+   ```bash
+   python wind.py
+   ```
+
 ### Training
 
 This section outlines the steps required to perform training on any of the documented hurricane model variants.
