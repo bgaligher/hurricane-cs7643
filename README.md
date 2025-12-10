@@ -43,9 +43,10 @@ This section outlines the steps required to perform training on any of the docum
    python train_hurricane.py
    ```
 
-   A CSV containing training metrics and a json file containing hyperparameters from the configuration yaml are saved output/hurricane
+   A CSV containing training metrics and a json file containing hyperparameters from the configuration yaml are saved to the following directory: output/hurricane.
+   The model checkpoint will be saved to the following directory: weights/.
 
-3. Obtain loss curves from the 'Plotting' section in the following Jupyter notebook: notebook/hurricane_analysis.ipynb
+4. Obtain loss curves from the 'Plotting' section in the following Jupyter notebook: notebook/hurricane_analysis.ipynb
 
 ### Evaluation (Holdout Set)
 
@@ -54,9 +55,8 @@ This section outlines the steps required to perform training on any of the docum
    ```bash
    python inference_hurricane.py
    ```
-
-   Final challenge score and F1 scores are printed in the terminal.
-
+   Optional argument is the job_id, which can be used to provide a keyword for the script to search in the checkpoint file names located in the weights/ directory.
+   After executing this script, the final challenge score and F1 scores are printed in the terminal.
 
 
 ## Strong Baseline Model
