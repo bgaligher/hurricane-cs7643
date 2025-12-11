@@ -1,6 +1,7 @@
 """
 Additional References:
     1. Upsample decoder motivated by U-Net architecture: https://github.com/milesial/Pytorch-UNet
+    2. Bilinear up-sampling: https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.interpolate.html
 
 """
 
