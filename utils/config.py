@@ -1,5 +1,5 @@
 """
-Original class from: CS7653 - Assignment 4 codebase
+Class from course codebase (Assignment 4)
 
 Edits:
     None.
