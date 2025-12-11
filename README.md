@@ -6,15 +6,7 @@ Code from the following public repositories was used/modified for our project:
    1. https://github.com/vdurnov/xview2_1st_place_solution
    2. https://github.com/PaulBorneP/Xview2_Strong_Baseline
 
-## Hurricane Model
-
-### Python Environment & Dependencies
-
-In order to execute the training and evaluation code in this section, the correct Python version and dependencies need to be installed. We recommend installing Anaconda3 version 2023.03 because it was used to execute the experiments for this model - Python version 3.10.
-
-It is recommended to create a Python virtual environment and install dependencies using requirements.txt file in the root directory of this repository.
-
-### Dataset preparation
+## Dataset Preparation
 
 1. Download the xBD dataset following the instructions at link: https://xview2.org/
 
@@ -23,8 +15,21 @@ It is recommended to create a Python virtual environment and install dependencie
    ```bash
    python wind.py
    ```
+3. Navigate to the utils/ directory and execute the following code in the terminal to create masks for the datasets
 
-### Training
+```bash
+   create_masks.py
+   ``` 
+
+## Hurricane Model
+
+### Python Environment & Dependencies
+
+In order to execute the training and evaluation code in this section, the correct Python version and dependencies need to be installed. We recommend installing Anaconda3 version 2023.03 because it was used to execute the experiments for this model - Python version 3.10.
+
+It is recommended to create a Python virtual environment and install dependencies using requirements.txt file in the root directory of this repository.
+
+### Model Training
 
 This section outlines the steps required to perform training on any of the documented hurricane model variants.
 
@@ -43,10 +48,10 @@ This section outlines the steps required to perform training on any of the docum
    python train_hurricane.py
    ```
 
-   A CSV containing training metrics and a json file containing hyperparameters from the configuration yaml are saved to the following directory: output/hurricane.
+   A CSV containing training metrics and a JSON file containing hyperparameters from the configuration yaml are saved to the following directory: output/hurricane.
    The model checkpoint will be saved to the following directory: weights/.
 
-4. Obtain loss curves from the 'Plotting' section in the following Jupyter notebook: notebook/hurricane_analysis.ipynb
+4. Obtain loss curves from the 'Plotting' section in this Jupyter notebook: notebook/hurricane_analysis.ipynb
 
 ### Evaluation (Holdout Set)
 
@@ -78,21 +83,6 @@ Then replace the files in that repository with those found in the xview2_strong_
 Create a Python virtual environment and install dependencies using the newly replaced requirements.txt file.
 Change all target filepath directory references to your wind dataset folders.
 
-### Dataset preparation
-
-1. Download the xBD dataset following the instructions at link: https://xview2.org/
-
-2. Execute the following code in the terminal to isolate wind data from xBD:
-
-   ```bash
-   python wind.py
-   ```
-
-3. Execute the following code in the terminal to create masks for the datasets
-
-```bash
-   create_masks.py
-   ``` 
 ### Training and Evaluation
 
 1. Execute the following code in the terminal:
